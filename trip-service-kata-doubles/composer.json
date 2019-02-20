@@ -1,0 +1,18 @@
+{
+    "name": "codium/trip-service-kata",
+    "authors": [
+        {
+            "name": "Luis Rovirosa",
+            "email": "luisrovirosa@gmail.com"
+        }
+    ],
+    "require": {
+        "phpunit/phpunit": "^7.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "TripServiceKata\\": "src",
+            "Test\\TripServiceKata\\": "tests"
+        }
+    }
+}
