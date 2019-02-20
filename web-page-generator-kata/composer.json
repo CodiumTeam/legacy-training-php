@@ -1,0 +1,17 @@
+{
+    "name": "codium/web-page-generator-kata",
+    "authors": [
+        {
+            "name": "Luis Rovirosa",
+            "email": "luisrovirosa@gmail.com"
+        }
+    ],
+    "require": {
+        "symfony/console": "^4.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "": "src"
+        }
+    }
+}
