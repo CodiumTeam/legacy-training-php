@@ -52,7 +52,7 @@ class UsersStaticWebPageGenerator
         fwrite($f, "<footer class=\"mastfoot mt-auto\">");
         fwrite($f, "<div class=\"inner\">");
         fwrite($f,
-            "<p>Sprout class kata created by Codium <a href=\"https://twitter.com/CodiumTeam\">@CodiumTeam</a>. Cover template for <a href=\"https://getbootstrap.com/\">Bootstrap</a>, by <a href=\"https://twitter.com/mdo\">@mdo</a>.</p>");
+            "<p>Web page generator kata created by Codium <a href=\"https://twitter.com/CodiumTeam\">@CodiumTeam</a>. Cover template for <a href=\"https://getbootstrap.com/\">Bootstrap</a>, by <a href=\"https://twitter.com/mdo\">@mdo</a>.</p>");
         fwrite($f, "</div>");
         fwrite($f, "</footer>");
         fwrite($f, "</div>");
