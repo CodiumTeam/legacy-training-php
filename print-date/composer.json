@@ -1,0 +1,18 @@
+{
+    "name": "codium/print-date",
+    "authors": [
+        {
+            "name": "Luis Rovirosa",
+            "email": "luisrovirosa@gmail.com"
+        }
+    ],
+    "require": {
+        "phpunit/phpunit": "^7.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "PrintDate\\": "src",
+            "PrintDate\\Test\\": "tests"
+        }
+    }
+}
