@@ -8,7 +8,7 @@ dependencies:
 tests:
 	./vendor/bin/phpunit
 coverage:
-	./vendor/bin/phpunit --coverage-text
+	./vendor/bin/phpunit --coverage-html coverage
 mutants:
 	./vendor/bin/infection
 
