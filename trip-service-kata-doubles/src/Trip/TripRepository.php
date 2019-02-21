@@ -6,5 +6,5 @@ use TripServiceKata\User\User;
 
 interface TripRepository
 {
-    public static function findTripsByUser(User $user);
+    public function findTripsByUser(User $user);
 }
