@@ -9,14 +9,14 @@ use TripServiceKata\Exception\UserNotLoggedInException;
 class TripService
 {
     /** @var UserSession  */
-    private $loggedUser;
+    private $userSession;
     /** @var TripRepository  */
     private $tripRepository;
 
-    public function __construct(?User $loggedUser, TripRepository $tripRepository)
+    public function __construct(UserSession $userSession, TripRepository $tripRepository)
     {
         $this->tripRepository = $tripRepository;
-        $this->loggedUser = $loggedUser;
+        $this->userSession = $userSession;
     }
 
     /**
@@ -27,9 +27,10 @@ class TripService
     public function getTripsByUser(User $user) {
         $tripList = array();
         $isFriend = false;
-        if ($this->loggedUser != null) {
+        $loggedUser = $this->userSession->getLoggedUser();
+        if ($loggedUser != null) {
             foreach ($user->getFriends() as $friend) {
-                if ($friend == $this->loggedUser) {
+                if ($friend == $loggedUser) {
                     $isFriend = true;
                     break;
                 }
