@@ -10,7 +10,7 @@ class User
     private $friends;
     private $name;
 
-    public function __construct($name)
+    public function __construct(string $name)
     {
         $this->name = $name;
         $this->trips = array();

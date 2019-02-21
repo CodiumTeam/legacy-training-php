@@ -13,7 +13,7 @@ class TripService
     /** @var TripRepository  */
     private $tripRepository;
 
-    public function __construct(UserSession $loggedUser, TripRepository $tripRepository)
+    public function __construct(?User $loggedUser, TripRepository $tripRepository)
     {
         $this->tripRepository = $tripRepository;
         $this->loggedUser = $loggedUser;
