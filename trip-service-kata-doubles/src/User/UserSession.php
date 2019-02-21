@@ -30,7 +30,7 @@ class UserSession
         );
     }
 
-    public function getLoggedUser()
+    public function getLoggedUser(): ?User
     {
         throw new DependentClassCalledDuringUnitTestException(
             'UserSession.getLoggedUser() should not be called in an unit tests'
