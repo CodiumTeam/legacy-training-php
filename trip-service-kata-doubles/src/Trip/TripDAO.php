@@ -5,7 +5,7 @@ namespace TripServiceKata\Trip;
 use TripServiceKata\User\User;
 use TripServiceKata\Exception\DependentClassCalledDuringUnitTestException;
 
-class TripDAO implements TripRepository
+class TripDAO
 {
     public static function findTripsByUser(User $user)
     {
