@@ -1,7 +1,5 @@
 FROM php:7.2
 
-MAINTAINER Luis Rovirosa <luisrovirosa@gmail.com>
-
 # Composer and dependencies
 RUN apt-get update && \
     apt-get install git unzip -y
