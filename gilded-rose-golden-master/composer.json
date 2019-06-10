@@ -1,0 +1,14 @@
+{
+    "name": "codium/gilded-rose-golden-master",
+    "authors": [
+        {
+            "name": "Luis Rovirosa",
+            "email": "luisrovirosa@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "GildedRose\\": "src"
+        }
+    }
+}
