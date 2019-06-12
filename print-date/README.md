@@ -20,10 +20,37 @@ How to use Mockito to generate the doubles.
 [Prophecy](https://github.com/phpspec/prophecy)
 ### Example of spy
 
+    /** @test */
+    function should_success_when_password_is_valid()
+    {
+        $prophecy = $this->prophesize(PasswordValidator:class);
+        $prophecy->isValid(‘aPassword’)->willReturn(true);
+        /** @var PasswordValidator $passwordValidator */
+        $passwordValidator = $prophecy->reveal();
+        $userRegistration = new UserRegistration($passwordValidator);
+    
+        $success = $userRegistration->run();
+    
+    
+        $this->assertTrue($success);
+    }
 
 	
 ### Example of stub
-
+    /** @test */
+    function should_send_an_email()
+    {
+        $prophecy = $this->prophesize(EmailSender:class);
+        /** @var EmailSender $emailSender */
+        $emailSender = $prophecy->reveal();
+        $userRegistration = new UserRegistration($emailSender);
+    
+    
+        $userRegistration->register();
+    
+    
+        $prophecy->send()->shouldHaveBeenCalled();
+    }
 
 ## Authors
 Luis Rovirosa [@luisrovirosa](https://www.twitter.com/luisrovirosa)
