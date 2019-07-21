@@ -9,26 +9,35 @@ tests:
 	./vendor/bin/phpunit
 coverage:
 	./vendor/bin/phpunit --coverage-text
+server-start:
+	php bin/console server:run 0.0.0.0
+request:
+	curl -X POST 'http://localhost:8000/users?email=info@codium.team&name=Luis%20Rovirosa&password=validPassword1234_'
+	@printf "\n"
 
 # Docker commands
 docker-build:
 	docker build -t php-docker-bootstrap .
 	@docker run -v $(shell pwd):/opt/project php-docker-bootstrap make dependencies
-
 docker-tests:
 	@docker run -v $(shell pwd):/opt/project php-docker-bootstrap make tests
 docker-coverage:
 	@docker run -v $(shell pwd):/opt/project php-docker-bootstrap make coverage
+docker-server-start:
+	@docker run -i -v $(shell pwd):/opt/project -p 8000:8000 php-docker-bootstrap make server-start
 
 define HELP
 # Local commands
-	- make dependencies\tInstall the dependencies using composer
-	- make tests\t\tRun the tests
-	- make coverage\t\tRun the code coverage
+	- make dependencies\t\tInstall the dependencies using composer
+	- make tests\t\t\tRun the tests
+	- make coverage\t\t\tRun the code coverage
+	- make server-start\t\tTo start the webserver
+	- make request\t\t\tMake an HTTP request to the server registering a user
 # Docker commands
-	- make docker-build\tCreates a PHP image with xdebug and install the dependencies
-	- make docker-tests\tRun the tests on docker
-	- make docker-coverage\tRun the code coverage
+	- make docker-build\t\tCreates a PHP image with xdebug and install the dependencies
+	- make docker-tests\t\tRun the tests on docker
+	- make docker-coverage\t\tRun the code coverage
+	- make docker-server-start\tTo start the webserver on docker
  Please execute "make <command>". Example make help
 
 endef

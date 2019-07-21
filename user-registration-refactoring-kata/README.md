@@ -1,19 +1,43 @@
 # Goal
 Identify the different responsibilities and couplings.
 
-1. Identify the problems
-2. Isolate the different responsibilities 
-3. Decouple from Framework, infrastructure and libraries.
+1. Identify the coupling with the Framework and decouple from it. 
+2. Identify the couplings with infrastructure and libraries and decouple from it.
+
+## Install the dependencies
+
+using PHP installed locally
+
+    make dependencies
+
+or within docker
+
+    make docker-build
+
+## Run the tests
+
+using PHP installed locally
+
+    make tests
+
+or within docker
+
+    make docker-tests
 
 ## To Run the application
-### Using IntelliJ
+
+This code is a full app you can run it and use it.
+
+    make server-start
     
-### Using Composer
+or
+
+    make docker-server-start
+
     
 ## To run a request 
-    curl -X POST \
-      'http://localhost:8080/users?email=luis@codium.team&name=Luis%20Rovirosa&password=validPassword1234_'
-      
+    make request
+          
 ## Authors
 Luis Rovirosa [@luisrovirosa](https://www.twitter.com/luisrovirosa)
 
