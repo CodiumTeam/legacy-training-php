@@ -1,5 +1,18 @@
 # Web Page Generator Kata
 
+## Goals
+- **Practice the sprout class technique** to avoid adding more complexity to the current classes
+- **Practice the wrap method/class technique** in the bonus task to encapsulate the current logic and add a the new feature
+
+## Run the kata
+On Linux and Mac
+
+    make
+
+in Windows using docker
+
+    docker run -v %cd%:/opt/project php-docker-bootstrap make
+
 ## Description:
 ### Context
 We currently have system that generates static web pages for our website. One of those pages is the Users Biography page where it is displayed valuable information about our registered users.
@@ -59,10 +72,6 @@ We want to display a special label titled "Community manager" if this text appea
 if we end up the development and still have more time they have asked us to add an extra feature that will be gladly rewarded.
 
 In this bonus feature we should create a backup file apart from the automatic generated one. Thus the manager can keep an historic of the generated pages.
-
-## Goals
-- **Practice the sprout class technique** to avoid adding more complexity to the current classes
-- **Practice the wrap method/class technique** in the bonus task to encapsulate the current logic and add a the new feature
 
 ## Authors
 Luis Rovirosa Mairlot [@luisrovirosa](https://www.twitter.com/luisrovirosa)
