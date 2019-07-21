@@ -65,6 +65,6 @@ In this bonus feature we should create a backup file apart from the automatic ge
 - **Practice the wrap method/class technique** in the bonus task to encapsulate the current logic and add a the new feature
 
 ## Authors
-Luis Rovirosa [@luisrovirosa](https://www.twitter.com/luisrovirosa)
+Luis Rovirosa Mairlot [@luisrovirosa](https://www.twitter.com/luisrovirosa)
 
 Jordi Anguela [@jordianguela](https://www.twitter.com/jordianguela)

@@ -6,6 +6,7 @@ dependencies:
 	composer install
 run:
 	php bin/console web:generate
+	@printf "Open html/users.html\n"
 
 # Docker commands
 docker-build:
