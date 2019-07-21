@@ -7,10 +7,13 @@ dependencies:
 .PHONY: tests
 tests:
 	./vendor/bin/phpunit
+.PHONY: coverage
 coverage:
 	./vendor/bin/phpunit --coverage-html coverage
+	@printf "\nOpen coverage/index.html to see the code coverage\n"
 mutants:
 	./vendor/bin/infection
+	@printf "\nOpen infection.log to see the mutations\n"
 
 # Docker commands
 docker-build:
