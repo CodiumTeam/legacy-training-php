@@ -18,7 +18,7 @@ How to use Mockito to generate the doubles.
 
 ## Tools
 [Prophecy](https://github.com/phpspec/prophecy)
-### Example of spy
+### Example of spy with prophecy
 
     /** @test */
     function should_success_when_password_is_valid()
@@ -36,7 +36,7 @@ How to use Mockito to generate the doubles.
     }
 
 	
-### Example of stub
+### Example of stub with prophecy
     /** @test */
     function should_send_an_email()
     {
