@@ -2,19 +2,28 @@
 Be able to test printCurrentDate function without changing the method signature.
 
 1. Decouple the code
-2. Test the code with doubles from a library.
+2. Test the code with doubles using a library.
 3. Test the code with doubles created by you.
 # Code to test
     public function printCurrentDate()
     {
-        echo date("Y-m-d H:i:s");
+        $now = $this->calendar->now();
+        $this->printer->printLine($now);
     }
+    
+## Run the kata
+On Linux and Mac
+
+    make
+
+in Windows using docker
+
+    docker run -v ${PWD}:/opt/project php-docker-bootstrap make
+
 # Learnings
-Detect coupled code and decouple it.
+How to use Prophecy to generate the doubles.
 
 How to build a Mock and Stub manually.
-
-How to use Mockito to generate the doubles.
 
 ## Tools
 [Prophecy](https://github.com/phpspec/prophecy)
@@ -30,7 +39,6 @@ How to use Mockito to generate the doubles.
         $userRegistration = new UserRegistration($passwordValidator);
     
         $success = $userRegistration->run();
-    
     
         $this->assertTrue($success);
     }
