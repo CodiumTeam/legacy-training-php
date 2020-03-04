@@ -18,24 +18,25 @@ request:
 # Docker commands
 docker-build:
 	docker build -t php-docker-bootstrap .
-	@docker run -v $(shell pwd):/opt/project php-docker-bootstrap make dependencies
+	@docker run -v ${PWD}:/opt/project php-docker-bootstrap make dependencies
 docker-tests:
-	@docker run -v $(shell pwd):/opt/project php-docker-bootstrap make tests
+	@docker run -v ${PWD}:/opt/project php-docker-bootstrap make tests
 docker-coverage:
-	@docker run -v $(shell pwd):/opt/project php-docker-bootstrap make coverage
+	@docker run -v ${PWD}:/opt/project php-docker-bootstrap make coverage
 docker-server-start:
-	@docker run -i -v $(shell pwd):/opt/project -p 8000:8000 php-docker-bootstrap make server-start
+	@docker run -i -v ${PWD}:/opt/project -p 8000:8000 php-docker-bootstrap make server-start
 
 define HELP
 # Local commands
 	- make dependencies\t\tInstall the dependencies using composer
 	- make tests\t\t\tRun the tests
-	- make coverage\t\t\tRun the code coverage
-	- make server-start\t\tTo start the webserver
-	- make request\t\t\tMake an HTTP request to the server registering a user
 # Docker commands
 	- make docker-build\t\tCreates a PHP image with xdebug and install the dependencies
 	- make docker-tests\t\tRun the tests on docker
+# Extra commands (not required for the training)
+	- make coverage\t\t\tRun the code coverage
+	- make server-start\t\tTo start the webserver
+	- make request\t\t\tMake an HTTP request to the server registering a user
 	- make docker-coverage\t\tRun the code coverage
 	- make docker-server-start\tTo start the webserver on docker
  Please execute "make <command>". Example make help
