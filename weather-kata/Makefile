@@ -30,7 +30,7 @@ define HELP
 # Docker commands
 	- make docker-dependencies\tInstall the dependencies
 	- make docker-tests\t\tRun the tests on docker
-# Extra commando (not required for the training
+# Extra commands (not required for the training)
 	- make complexity\t\tCalculate code complexity
 	- make docker-complexity\tCalculate code complexity on docker
  Please execute "make <command>". Example make help
