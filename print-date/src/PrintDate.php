@@ -15,6 +15,7 @@ class PrintDate
 
     public function printCurrentDate()
     {
-        $this->printer->printLine($this->calendar->now());
+        $now = $this->calendar->now();
+        $this->printer->printLine($now);
     }
 }
