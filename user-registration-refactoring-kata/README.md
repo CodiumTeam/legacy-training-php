@@ -1,42 +1,36 @@
-# Goal
-Identify the different responsibilities and couplings.
+## Description
+This all about an API that registers the users of a web application. 
 
-1. Identify the coupling with the Framework and decouple from it. 
-2. Identify the couplings with infrastructure and libraries and decouple from it.
+It is designed to practice how to identify the different responsibilities in the code and decouple them.
 
-## Install the dependencies
+## Goal
+There are two main objectives:
+1. Part 1: decouple the code from the Framework used.
+2. Part 2: decouple the code from Database and Libraries.
 
-using PHP installed locally
+## Part 1: decouple the code from the Framework used.
+1. Run the tests.
+2. Do not write Business logic on the Controllers → Instead move ALL the logic to a Use Case class.
+3. Do not use the Inputs of the Framework as arguments of your Use Case class.
+4. Create your own exceptions to handle errors.
+5. Do not use the Framework response as the response of your Use Case class.
 
-    make dependencies
+## Part 2: decouple the code from Database and Libraries.
+For the second part of the exercise you need to repeat this 4 steps for each coupling: 
+1. Define an Interface using Dependency Inversion Principle.
+2. Evolve your legacy code to match the Interface.
+3. Create an adapter that implements the Interface and uses the Library.
+4. Remove the coupling with the infrastructure (Database and Libraries) injecting the collaborator.
 
-or within docker
+## Run the kata
+On Linux and Mac
 
-    make docker-build
+    make
 
-## Run the tests
+in Windows using docker
 
-using PHP installed locally
+    docker run -v ${PWD}:/opt/project php-docker-bootstrap make
 
-    make tests
-
-or within docker
-
-    make docker-tests
-
-## To Run the application
-
-This code is a full app you can run it and use it.
-
-    make server-start
-    
-or
-
-    make docker-server-start
-
-    
-## To run a request 
-    make request
           
 ## Authors
 Luis Rovirosa [@luisrovirosa](https://www.twitter.com/luisrovirosa)
