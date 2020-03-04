@@ -11,7 +11,7 @@ On Linux and Mac
 
 in Windows using docker
 
-    docker run -v %cd%:/opt/project php-docker-bootstrap make
+    docker run -v ${PWD}:/opt/project php-docker-bootstrap make
 
 ## Description:
 ### Context
