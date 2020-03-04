@@ -3,8 +3,6 @@
 ## Description:
 This kata has a legacy code to practice writing a Golden Master piece.
 
-Write your code inside the src/Main.php
-
 # Business requirements
 You don't need the business requirements.
 
@@ -12,32 +10,14 @@ You don't need the business requirements.
 - Write a code to generate an output that you need to be sure the code behaviour does not change.
 - Write an script to automate the test execution.
 
-## Install the dependencies
-**Locally**
+## Run the kata
+On Linux and Mac
 
-    make dependencies
-or
+    make
 
-    composer dump-autoload
+in Windows using docker
 
-**Docker**
-
-    make docker-build
-
-## Run the tests
-
-**Locally** with PHP 7 on Linux and Mac
-
-    make run
-**Docker**
-
-on **Linux and Mac**
-
-    make docker-run
-
-on **Windows**
-
-    docker run -v %cd%:/opt/project php-docker-bootstrap make run
+    docker run -v ${PWD}:/opt/project php-docker-bootstrap make
 
 ## Inspired by:
 https://github.com/emilybache/GildedRose-Refactoring-Kata/

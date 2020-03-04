@@ -10,9 +10,9 @@ run:
 # Docker commands
 docker-build:
 	docker build -t php-docker-bootstrap .
-	@docker run -v $(shell pwd):/opt/project php-docker-bootstrap make dependencies
+	@docker run -v ${PWD}:/opt/project php-docker-bootstrap make dependencies
 docker-run:
-	@docker run -v $(shell pwd):/opt/project -w /opt/project php-docker-bootstrap make run
+	@docker run -v ${PWD}:/opt/project -w /opt/project php-docker-bootstrap make run
 define HELP
 # Local commands
 	- make run\t\tRun the code
