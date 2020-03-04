@@ -1,5 +1,7 @@
 FROM php:7.2
 
+MAINTAINER Codium <info@codium.team>
+
 # Composer and dependencies
 RUN apt-get update && \
     apt-get install git unzip -y

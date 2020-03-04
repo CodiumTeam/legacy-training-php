@@ -1,6 +1,6 @@
 FROM php:7.2
 
-MAINTAINER Luis Rovirosa <luisrovirosa@gmail.com>
+MAINTAINER Codium <info@codium.team>
 
 # Composer and dependencies
 RUN apt-get update && \
