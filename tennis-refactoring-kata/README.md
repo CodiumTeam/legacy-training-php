@@ -1,9 +1,12 @@
 # Tennis Refactoring Kata
 
-## Goals:
-- Identify and remove code smells
-- Practice refactors / automated refactors
-- Enjoy the benefits of having a test harness
+We cannot control the weather but we can predict it.
+
+This kata has a code that request the weather prediction from Metaweather.
+
+## Goal
+- Test coupled code.
+- Remove the external dependency when testing in order to make the tests repeatable and fast
 
 ## Run the kata
 On Linux and Mac
