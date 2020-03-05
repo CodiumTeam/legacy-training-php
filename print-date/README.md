@@ -27,7 +27,7 @@ How to build a Mock and Stub manually.
 
 ## Tools
 [Prophecy](https://github.com/phpspec/prophecy)
-### Example of spy with prophecy
+### Example of stub with prophecy
 
     /** @test */
     function should_success_when_password_is_valid()
@@ -44,7 +44,7 @@ How to build a Mock and Stub manually.
     }
 
 	
-### Example of stub with prophecy
+### Example of spy with prophecy
     /** @test */
     function should_send_an_email()
     {
