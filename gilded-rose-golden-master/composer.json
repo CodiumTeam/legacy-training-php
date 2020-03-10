@@ -2,8 +2,12 @@
     "name": "codium/gilded-rose-golden-master",
     "authors": [
         {
-            "name": "Luis Rovirosa",
-            "email": "luisrovirosa@gmail.com"
+            "name": "Luis Rovirosa Mairlot",
+            "email": "luis@codium.team"
+        },
+        {
+            "name": "Jordi Anguela",
+            "email": "jordi@codium.team"
         }
     ],
     "autoload": {

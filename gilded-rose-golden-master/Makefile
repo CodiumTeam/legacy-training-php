@@ -15,8 +15,10 @@ docker-run:
 	@docker run -v ${PWD}:/opt/project -w /opt/project php-docker-bootstrap make run
 define HELP
 # Local commands
+	- make dependencies\tInstall the dependencies.
 	- make run\t\tRun the code
 # Docker commands
+	- make docker-build\tInstall the dependencies using docker.
 	- make docker-run\tRun the program on docker
  Please execute "make <command>". Example make help
 
