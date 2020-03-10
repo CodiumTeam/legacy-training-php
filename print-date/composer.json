@@ -2,12 +2,16 @@
     "name": "codium/print-date",
     "authors": [
         {
-            "name": "Luis Rovirosa",
-            "email": "luisrovirosa@gmail.com"
+            "name": "Luis Rovirosa Mairlot",
+            "email": "luis@codium.team"
+        },
+        {
+            "name": "Jordi Anguela",
+            "email": "jordi@codium.team"
         }
     ],
     "require": {
-        "phpunit/phpunit": "^7.5"
+        "phpunit/phpunit": "^9"
     },
     "autoload": {
         "psr-4": {
