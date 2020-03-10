@@ -2,19 +2,20 @@
 
 namespace Codium\CleanCode;
 
+use DateTime;
 use GuzzleHttp\Client;
 
 class Forecast
 {
-    public function predict(string &$city, \DateTime $datetime = null, bool $wind = false): string
+    public function predict(string $city, DateTime $datetime = null, bool $wind = false): string
     {
         // When date is not provided we look for the current prediction
         if (!$datetime) {
-            $datetime = new \DateTime();
+            $datetime = new DateTime();
         }
 
         // If there are predictions
-        if ($datetime < new \DateTime("+6 days 00:00:00")) {
+        if ($datetime < new DateTime("+6 days 00:00:00")) {
 
 
             // Create a Guzzle Http Client
@@ -23,7 +24,6 @@ class Forecast
             // Find the id of the city on metawheather
             $woeid = json_decode($client->get("https://www.metaweather.com/api/location/search/?query=$city")->getBody()->getContents(),
                 true)[0]['woeid'];
-            $city = $woeid;
 
             // Find the predictions for the city
             $results = json_decode($client->get("https://www.metaweather.com/api/location/$woeid")->getBody()->getContents(),

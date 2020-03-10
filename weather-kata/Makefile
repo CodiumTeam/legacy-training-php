@@ -7,7 +7,7 @@ default:
 # Dependencies
 dependencies:
 	composer install
-docker-dependencies:
+docker-build:
 	docker run -v ${PWD}:/opt/project -w /opt/project composer make dependencies
 
 # Tests
@@ -15,20 +15,20 @@ docker-dependencies:
 tests:
 	./vendor/bin/phpunit
 docker-tests:
-	docker run -v ${PWD}:/opt/project -w /opt/project php:7.2 make tests
+	docker run -v ${PWD}:/opt/project -w /opt/project php:7.4 make tests
 
 # Complexity
 complexity:
 	./vendor/bin/phpmetrics src/
 docker-complexity:
-	docker run -v ${PWD}:/opt/project -w /opt/project php:7.2 make complexity
+	docker run -v ${PWD}:/opt/project -w /opt/project php:7.4 make complexity
 
 define HELP
 # Local commands
 	- make dependencies\tInstall the dependencies using composer
 	- make tests\t\tRun the tests
 # Docker commands
-	- make docker-dependencies\tInstall the dependencies
+	- make docker-build\tInstall the dependencies
 	- make docker-tests\t\tRun the tests on docker
 # Extra commands (not required for the training)
 	- make complexity\t\tCalculate code complexity

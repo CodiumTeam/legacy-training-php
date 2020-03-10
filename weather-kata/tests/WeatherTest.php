@@ -2,7 +2,6 @@
 
 namespace Tests\Codium\CleanCode;
 
-use Codium\CleanCode\Forecast;
 use PHPUnit\Framework\TestCase;
 
 class WeatherTest extends TestCase
@@ -11,7 +10,6 @@ class WeatherTest extends TestCase
     /** @test */
     public function find_the_weather_of_today()
     {
-        $this->assertTrue(true, 'I don\'t know how to test it');
+        $this->assertEquals(true, true);
     }
-
 }
