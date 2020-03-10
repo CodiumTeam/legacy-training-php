@@ -2,12 +2,16 @@
     "name": "codium/web-page-generator-kata",
     "authors": [
         {
-            "name": "Luis Rovirosa",
-            "email": "luisrovirosa@gmail.com"
+            "name": "Luis Rovirosa Mairlot",
+            "email": "luis@codium.team"
+        },
+        {
+            "name": "Jordi Anguela",
+            "email": "jordi@codium.team"
         }
     ],
     "require": {
-        "symfony/console": "^4.2"
+        "symfony/console": "^4"
     },
     "autoload": {
         "psr-4": {
