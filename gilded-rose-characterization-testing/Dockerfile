@@ -1,4 +1,4 @@
-FROM php:7.2
+FROM php:7.4
 
 MAINTAINER Codium <info@codium.team>
 
@@ -10,7 +10,7 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" &&
     php -r "unlink('composer-setup.php');" && \
     mv composer.phar /usr/local/bin/composer
 
-RUN pecl install xdebug-2.6.1 && docker-php-ext-enable xdebug
+RUN pecl install xdebug-2.9.2 && docker-php-ext-enable xdebug
 
 # Volume to have access to the source code
 VOLUME ["/opt/project"]

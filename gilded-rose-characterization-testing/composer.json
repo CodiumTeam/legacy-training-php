@@ -2,13 +2,17 @@
     "name": "codium/gilded-rose-characterization-testing",
     "authors": [
         {
-            "name": "Luis Rovirosa",
-            "email": "luisrovirosa@gmail.com"
+            "name": "Luis Rovirosa Mairlot",
+            "email": "luis@codium.team"
+        },
+        {
+            "name": "Jordi Anguela",
+            "email": "jordi@codium.team"
         }
     ],
     "require": {
-        "phpunit/phpunit": "^7.5",
-        "infection/infection": "^0.12.2"
+        "phpunit/phpunit": "^9",
+        "infection/infection": "^0.15"
     },
     "autoload": {
         "psr-4": {
