@@ -7,7 +7,7 @@ run:
 
 # Docker commands
 docker-run:
-	@docker run -v ${PWD}:/opt/project -w /opt/project php:7.2 make run
+	@docker run --rm -v ${PWD}:/opt/project -w /opt/project php:7.2 make run
 define HELP
 # Local commands
 	- make run\t\tRun the code

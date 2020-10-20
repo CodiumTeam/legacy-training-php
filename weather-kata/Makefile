@@ -8,20 +8,20 @@ default:
 dependencies:
 	composer install
 docker-build:
-	docker run -v ${PWD}:/opt/project -w /opt/project composer make dependencies
+	docker run --rm -v ${PWD}:/opt/project -w /opt/project composer make dependencies
 
 # Tests
 .PHONY: tests
 tests:
 	./vendor/bin/phpunit
 docker-tests:
-	docker run -v ${PWD}:/opt/project -w /opt/project php:7.4 make tests
+	docker run --rm -v ${PWD}:/opt/project -w /opt/project php:7.4 make tests
 
 # Complexity
 complexity:
 	./vendor/bin/phpmetrics src/
 docker-complexity:
-	docker run -v ${PWD}:/opt/project -w /opt/project php:7.4 make complexity
+	docker run --rm -v ${PWD}:/opt/project -w /opt/project php:7.4 make complexity
 
 define HELP
 # Local commands

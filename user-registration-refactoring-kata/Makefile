@@ -18,13 +18,13 @@ request:
 # Docker commands
 docker-build:
 	docker build -t php-docker-bootstrap .
-	@docker run -v ${PWD}:/opt/project php-docker-bootstrap make dependencies
+	@docker run --rm -v ${PWD}:/opt/project php-docker-bootstrap make dependencies
 docker-tests:
-	@docker run -v ${PWD}:/opt/project php-docker-bootstrap make tests
+	@docker run --rm -v ${PWD}:/opt/project php-docker-bootstrap make tests
 docker-coverage:
-	@docker run -v ${PWD}:/opt/project php-docker-bootstrap make coverage
+	@docker run --rm -v ${PWD}:/opt/project php-docker-bootstrap make coverage
 docker-server-start:
-	@docker run -i -v ${PWD}:/opt/project -p 8000:8000 php-docker-bootstrap make server-start
+	@docker run --rm -i -v ${PWD}:/opt/project -p 8000:8000 php-docker-bootstrap make server-start
 
 define HELP
 # Local commands

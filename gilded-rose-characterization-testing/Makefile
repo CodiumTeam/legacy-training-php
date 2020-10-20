@@ -18,14 +18,14 @@ mutations:
 # Docker commands
 docker-build:
 	docker build -t php-docker-bootstrap .
-	@docker run -v ${PWD}:/opt/project php-docker-bootstrap make dependencies
+	@docker run --rm -v ${PWD}:/opt/project php-docker-bootstrap make dependencies
 
 docker-tests:
-	@docker run -v ${PWD}:/opt/project php-docker-bootstrap make tests
+	@docker run --rm -v ${PWD}:/opt/project php-docker-bootstrap make tests
 docker-coverage:
-	@docker run -v ${PWD}:/opt/project php-docker-bootstrap make coverage
+	@docker run --rm -v ${PWD}:/opt/project php-docker-bootstrap make coverage
 docker-mutations:
-	@docker run -v ${PWD}:/opt/project php-docker-bootstrap phpdbg -qrr ./vendor/bin/infection
+	@docker run --rm -v ${PWD}:/opt/project php-docker-bootstrap phpdbg -qrr ./vendor/bin/infection
 define HELP
 # Local commands
 	- make dependencies\tInstall the dependencies using composer
