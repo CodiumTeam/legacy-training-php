@@ -13,6 +13,9 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" &&
 RUN pecl install xdebug-2.9.2 && docker-php-ext-enable xdebug
 
 # Volume to have access to the source code
-VOLUME ["/opt/project"]
+VOLUME ["/code"]
 
-WORKDIR /opt/project
+WORKDIR /code
+
+COPY composer.* /code/
+RUN composer install
