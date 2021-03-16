@@ -20,6 +20,7 @@
         "symfony/dotenv": "^4",
         "symfony/flex": "^1.9",
         "symfony/framework-bundle": "^4",
+        "sensio/framework-extra-bundle": "^4",
         "symfony/yaml": "^4"
     },
     "require-dev": {

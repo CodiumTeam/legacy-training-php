@@ -9,13 +9,17 @@ use PHPMailer\PHPMailer\PHPMailer;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
 
 class UserRegistrationController
 {
     /** @var DoctrineUserRepository */
     public static $orm;
 
-    public function index(Request $request)
+    /**
+     * @Route("/users", methods={"POST"}, name="register_user")
+     */
+    public function registerUser(Request $request)
     {
         if (strlen($request->get('password')) <= 8 || strpos($request->get('password'), '_') === false) {
             return new Response('Password is not valid', Response::HTTP_BAD_REQUEST);

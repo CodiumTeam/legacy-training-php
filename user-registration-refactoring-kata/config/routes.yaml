@@ -1,4 +1,0 @@
-index:
-    path: /users
-    controller: App\Controller\UserRegistrationController::index
-    methods: [POST]
