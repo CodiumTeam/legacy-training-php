@@ -28,7 +28,7 @@ class UserRegistrationController
             return new Response("The email is already in use", Response::HTTP_BAD_REQUEST);
         }
 
-        $user = new User(rand(0, 10000), $request->get('name'), $request->get('email'), $request->get('password'));
+        $user = new User((string) rand(0, 10000), $request->get('name'), $request->get('email'), $request->get('password'));
         self::orm()->save($user);
 
         try {
