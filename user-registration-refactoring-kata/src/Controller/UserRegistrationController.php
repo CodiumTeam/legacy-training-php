@@ -24,12 +24,12 @@ class UserRegistrationController
         if (strlen($request->get('password')) <= 8 || strpos($request->get('password'), '_') === false) {
             return new Response('Password is not valid', Response::HTTP_BAD_REQUEST);
         }
-        if ($this->orm()->findByEmail($request->get('email')) !== null) {
+        if (self::orm()->findByEmail($request->get('email')) !== null) {
             return new Response("The email is already in use", Response::HTTP_BAD_REQUEST);
         }
 
         $user = new User(rand(0, 10000), $request->get('name'), $request->get('email'), $request->get('password'));
-        $this->orm()->save($user);
+        self::orm()->save($user);
 
         try {
             $mail = new PHPMailer(true);
@@ -53,7 +53,7 @@ class UserRegistrationController
         return new JsonResponse($response, Response::HTTP_CREATED);
     }
 
-    private function orm(): DoctrineUserRepository
+    public static function orm(): DoctrineUserRepository
     {
         if (self::$orm == null) {
             self::$orm = new DoctrineUserRepository();
