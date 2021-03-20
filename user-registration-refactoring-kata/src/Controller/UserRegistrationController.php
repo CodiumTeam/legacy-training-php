@@ -39,11 +39,11 @@ class UserRegistrationController
             $mail->Username = 'user@example.com';
             $mail->Password = 'secret';
 
-            $mail->setFrom("noreply@codium.team", 'Codium Team');
-            $mail->addAddress($request->get('email'), $request->get('name'));
+            $mail->setFrom("noreply@codium.team");
+            $mail->addAddress($request->get('email'));
 
             $mail->isHTML(true);
-            $mail->Subject = "Welcome to Codium";
+            $mail->Subject = "Welcome to Codium, " . $request->get('name');
             $mail->Body = 'This is the HTML message body <b>in bold!</b>';
 //        $mail->send();
         } catch (Exception $e) {
