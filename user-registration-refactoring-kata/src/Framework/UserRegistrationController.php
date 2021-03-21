@@ -1,10 +1,9 @@
 <?php
 
-namespace App\Controller;
+namespace App\Framework;
 
+use App\Infrastructure\DoctrineUserRepository;
 use App\Model\User;
-use App\Repository\DoctrineUserRepository;
-use PHPMailer\PHPMailer\Exception;
 use PHPMailer\PHPMailer\PHPMailer;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;

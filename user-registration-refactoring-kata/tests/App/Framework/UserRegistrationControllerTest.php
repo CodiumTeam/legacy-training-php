@@ -1,8 +1,8 @@
 <?php
 
-namespace Tests\App\Controller;
+namespace Tests\App\Framework;
 
-use App\Controller\UserRegistrationController;
+use App\Framework\UserRegistrationController;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class UserRegistrationControllerTest extends WebTestCase
@@ -22,7 +22,7 @@ class UserRegistrationControllerTest extends WebTestCase
 
         $this->assertEquals(201, $client->getResponse()->getStatusCode());
     }
-    
+
     /** @test */
     public function should_returns_a_user_with_the_email_when_everything_is_valid()
     {
@@ -43,7 +43,7 @@ class UserRegistrationControllerTest extends WebTestCase
 
         $this->assertEquals('Codium', json_decode($client->getResponse()->getContent(), true)['name']);
     }
-    
+
 
     /** @test */
     public function should_fail_when_password_is_short()
