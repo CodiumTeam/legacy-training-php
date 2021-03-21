@@ -13,13 +13,10 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class UserRegistrationController
 {
-    /** @var DoctrineUserRepository */
-    public static $orm;
+    public static ?DoctrineUserRepository $orm;
 
-    /**
-     * @Route("/users", methods={"POST"}, name="register_user")
-     */
-    public function registerUser(Request $request)
+    /** @Route("/users", methods={"POST"}, name="register_user") */
+    public function registerUser(Request $request): Response
     {
         if (strlen($request->get('password')) <= 8 || strpos($request->get('password'), '_') === false) {
             return new Response('Password is not valid', Response::HTTP_BAD_REQUEST);
@@ -52,7 +49,7 @@ class UserRegistrationController
 
     public static function orm(): DoctrineUserRepository
     {
-        if (self::$orm == null) {
+        if (self::$orm === null) {
             self::$orm = new DoctrineUserRepository();
         }
         return self::$orm;
