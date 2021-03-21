@@ -46,7 +46,7 @@ class UserRegistrationController
         $mail->Body = 'This is the HTML message body <b>in bold!</b>';
 //        $mail->send();
 
-        $response = ['email' => $request->get('email'), 'name' => $request->get('name')];
+        $response = ['email' => $user->email(), 'name' => $user->name()];
         return new JsonResponse($response, Response::HTTP_CREATED);
     }
 
