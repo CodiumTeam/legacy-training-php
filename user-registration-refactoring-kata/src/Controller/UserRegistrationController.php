@@ -31,23 +31,20 @@ class UserRegistrationController
         $user = new User((string) rand(0, 10000), $request->get('name'), $request->get('email'), $request->get('password'));
         self::orm()->save($user);
 
-        try {
-            $mail = new PHPMailer(true);
-            $mail->isSMTP();
-            $mail->Host = 'smtp1.example.com;smtp2.example.com';
-            $mail->SMTPAuth = true;
-            $mail->Username = 'user@example.com';
-            $mail->Password = 'secret';
+        $mail = new PHPMailer(true);
+        $mail->isSMTP();
+        $mail->Host = 'smtp1.example.com;smtp2.example.com';
+        $mail->SMTPAuth = true;
+        $mail->Username = 'user@example.com';
+        $mail->Password = 'secret';
 
-            $mail->setFrom("noreply@codium.team");
-            $mail->addAddress($request->get('email'));
+        $mail->setFrom("noreply@codium.team");
+        $mail->addAddress($request->get('email'));
 
-            $mail->isHTML(true);
-            $mail->Subject = "Welcome to Codium, " . $request->get('name');
-            $mail->Body = 'This is the HTML message body <b>in bold!</b>';
+        $mail->isHTML(true);
+        $mail->Subject = "Welcome to Codium, " . $request->get('name');
+        $mail->Body = 'This is the HTML message body <b>in bold!</b>';
 //        $mail->send();
-        } catch (Exception $e) {
-        }
 
         $response = ['email' => $request->get('email'), 'name' => $request->get('name')];
         return new JsonResponse($response, Response::HTTP_CREATED);
