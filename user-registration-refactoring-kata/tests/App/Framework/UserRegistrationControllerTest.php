@@ -14,7 +14,7 @@ class UserRegistrationControllerTest extends WebTestCase
     }
 
     /** @test */
-    public function should_success_when_everything_is_valid()
+    public function should_success_when_everything_is_valid(): void
     {
         $client = static::createClient();
 
@@ -24,7 +24,7 @@ class UserRegistrationControllerTest extends WebTestCase
     }
 
     /** @test */
-    public function should_returns_a_user_with_the_email_when_everything_is_valid()
+    public function should_returns_a_user_with_the_email_when_everything_is_valid(): void
     {
         $client = static::createClient();
 
@@ -35,7 +35,7 @@ class UserRegistrationControllerTest extends WebTestCase
 
 
     /** @test */
-    public function should_returns_a_user_with_the_name_when_everything_is_valid()
+    public function should_returns_a_user_with_the_name_when_everything_is_valid(): void
     {
         $client = static::createClient();
 
@@ -46,7 +46,7 @@ class UserRegistrationControllerTest extends WebTestCase
 
 
     /** @test */
-    public function should_fail_when_password_is_short()
+    public function should_fail_when_password_is_short(): void
     {
         $client = static::createClient();
 
@@ -56,7 +56,7 @@ class UserRegistrationControllerTest extends WebTestCase
         $this->assertEquals('Password is not valid', $client->getResponse()->getContent());
     }
     /** @test */
-    public function should_fail_when_password_does_not_contain_underscore()
+    public function should_fail_when_password_does_not_contain_underscore(): void
     {
         $client = static::createClient();
 
@@ -66,7 +66,7 @@ class UserRegistrationControllerTest extends WebTestCase
         $this->assertEquals('Password is not valid', $client->getResponse()->getContent());
     }
     /** @test */
-    public function should_fail_when_email_is_used()
+    public function should_fail_when_email_is_used(): void
     {
         $client = static::createClient();
         $client->request('POST', '/users?name=Codium&email=my@email.com&password=myPass_1234');
