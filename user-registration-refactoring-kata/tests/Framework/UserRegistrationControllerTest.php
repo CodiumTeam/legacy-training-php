@@ -76,14 +76,4 @@ class UserRegistrationControllerTest extends WebTestCase
         $this->assertEquals(400, $client->getResponse()->getStatusCode());
         $this->assertEquals('The email is already in use', $client->getResponse()->getContent());
     }
-
-//    @Test
-//    public void should_generate_a_random_id_when_everything_is_valid() throws Exception {
-//    String arguments = "?name=Codium&email=my@email.com&password=myPass_123123";
-//        String url = "http://localhost:" + this.port + "/users" + arguments;
-//
-//        ResponseEntity<User> entity = this.testRestTemplate.postForEntity(url, null, User.class);
-//
-//        then(entity.getBody().getId()).isNotEqualTo(1);
-//    }
 }
