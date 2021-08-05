@@ -1,73 +1,66 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
- 
-class TennisGameTest extends TestCase
-{
+declare(strict_types=1);
 
+use PHPUnit\Framework\TestCase;
+
+final class TennisGameTest extends TestCase
+{
     /**
-     * @test
-     * 
-     * @param int $score1
-     * @param int $score2
-     * @param string $expectedResult
-     * @dataProvider data
+     * @dataProvider provideScores
      */
-    public function scores($score1, $score2, $expectedResult)
+    public function test_scores(int $score1, int $score2, string $expectedResult): void
     {
         $game = new TennisGame('player1', 'player2');
-        
+
         $highestScore = max($score1, $score2);
         for ($i = 0; $i < $highestScore; $i++) {
             if ($i < $score1) {
+
                 $game->wonPoint("player1");
             }
             if ($i < $score2) {
                 $game->wonPoint("player2");
             }
         }
-        $this->assertEquals($expectedResult, $game->getScore());
+
+        self::assertSame($expectedResult, $game->getScore());
     }
-    
-    /**
-     * @return mixed[][]
-     */
-    public function data()
+
+    public function provideScores(): iterable
     {
-        return array(
-            '0-0' => array(0, 0, "Love-All"),
-            '1-1' => array(1, 1, "Fifteen-All"),
-            '2-2' => array(2, 2, "Thirty-All"),
-            '3-3' => array(3, 3, "Deuce"),
-            '4-4' => array(4, 4, "Deuce"),
-            '1-0' => array(1, 0, "Fifteen-Love"),
-            '0-1' => array(0, 1, "Love-Fifteen"),
-            '2-0' => array(2, 0, "Thirty-Love"),
-            '0-2' => array(0, 2, "Love-Thirty"),
-            '3-0' => array(3, 0, "Forty-Love"),
-            '0-3' => array(0, 3, "Love-Forty"),
-            '4-0' => array(4, 0, "Win for player1"),
-            '0-4' => array(0, 4, "Win for player2"),
-            '2-1' => array(2, 1, "Thirty-Fifteen"),
-            '1-2' => array(1, 2, "Fifteen-Thirty"),
-            '3-1' => array(3, 1, "Forty-Fifteen"),
-            '1-3' => array(1, 3, "Fifteen-Forty"),
-            '4-1' => array(4, 1, "Win for player1"),
-            '1-4' => array(1, 4, "Win for player2"),
-            '3-2' => array(3, 2, "Forty-Thirty"),
-            '2-3' => array(2, 3, "Thirty-Forty"),
-            '4-2' => array(4, 2, "Win for player1"),
-            '2-4' => array(2, 4, "Win for player2"),
-            '4-3' => array(4, 3, "Advantage player1"),
-            '3-4' => array(3, 4, "Advantage player2"),
-            '5-4' => array(5, 4, "Advantage player1"),
-            '4-5' => array(4, 5, "Advantage player2"),
-            '15-14' => array(15, 14, "Advantage player1"),
-            '14-15' => array(14, 15, "Advantage player2"),
-            '6-4' => array(6, 4, "Win for player1"),
-            '4-6' => array(4, 6, "Win for player2"),
-            '16-14' => array(16, 14, "Win for player1"),
-            '14-16' => array(14, 16, "Win for player2"),
-        );
+        yield '0-0' => [0, 0, "Love-All"];
+        yield '1-1' => [1, 1, "Fifteen-All"];
+        yield '2-2' => [2, 2, "Thirty-All"];
+        yield '3-3' => [3, 3, "Deuce"];
+        yield '4-4' => [4, 4, "Deuce"];
+        yield '1-0' => [1, 0, "Fifteen-Love"];
+        yield '0-1' => [0, 1, "Love-Fifteen"];
+        yield '2-0' => [2, 0, "Thirty-Love"];
+        yield '0-2' => [0, 2, "Love-Thirty"];
+        yield '3-0' => [3, 0, "Forty-Love"];
+        yield '0-3' => [0, 3, "Love-Forty"];
+        yield '4-0' => [4, 0, "Win for player1"];
+        yield '0-4' => [0, 4, "Win for player2"];
+        yield '2-1' => [2, 1, "Thirty-Fifteen"];
+        yield '1-2' => [1, 2, "Fifteen-Thirty"];
+        yield '3-1' => [3, 1, "Forty-Fifteen"];
+        yield '1-3' => [1, 3, "Fifteen-Forty"];
+        yield '4-1' => [4, 1, "Win for player1"];
+        yield '1-4' => [1, 4, "Win for player2"];
+        yield '3-2' => [3, 2, "Forty-Thirty"];
+        yield '2-3' => [2, 3, "Thirty-Forty"];
+        yield '4-2' => [4, 2, "Win for player1"];
+        yield '2-4' => [2, 4, "Win for player2"];
+        yield '4-3' => [4, 3, "Advantage player1"];
+        yield '3-4' => [3, 4, "Advantage player2"];
+        yield '5-4' => [5, 4, "Advantage player1"];
+        yield '4-5' => [4, 5, "Advantage player2"];
+        yield '15-14' => [15, 14, "Advantage player1"];
+        yield '14-15' => [14, 15, "Advantage player2"];
+        yield '6-4' => [6, 4, "Win for player1"];
+        yield '4-6' => [4, 6, "Win for player2"];
+        yield '16-14' => [16, 14, "Win for player1"];
+        yield '14-16' => [14, 16, "Win for player2"];
     }
 }
