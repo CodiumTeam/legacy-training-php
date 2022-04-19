@@ -16,3 +16,6 @@ RUN pecl install xdebug-3.1.4 && docker-php-ext-enable xdebug
 VOLUME ["/opt/project"]
 
 WORKDIR /opt/project
+
+COPY composer.* ./
+RUN composer install
