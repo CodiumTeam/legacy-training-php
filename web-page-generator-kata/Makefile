@@ -11,7 +11,6 @@ run:
 # Docker commands
 docker-build:
 	docker build -t php-docker-bootstrap .
-	@docker run --rm -v ${PWD}:/opt/project php-docker-bootstrap make dependencies
 
 docker-run:
 	@docker run --rm -v ${PWD}:/opt/project php-docker-bootstrap make run
