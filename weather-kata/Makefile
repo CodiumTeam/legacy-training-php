@@ -8,14 +8,15 @@ default:
 dependencies:
 	composer install
 docker-build:
-	docker run --rm -v ${PWD}:/opt/project -w /opt/project composer make dependencies
+	docker build -t php-docker-bootstrap .
+	@docker run --rm -v ${PWD}:/code php-docker-bootstrap make dependencies
 
 # Tests
 .PHONY: tests
 tests:
 	./vendor/bin/phpunit
 docker-tests:
-	docker run --rm -v ${PWD}:/opt/project -w /opt/project php:7.4 make tests
+	docker run --rm -v ${PWD}:/code -w /code php-docker-bootstrap make tests
 
 # Complexity
 complexity:
