@@ -2,14 +2,7 @@
 
 class UsersStaticWebPageGenerator
 {
-    /**
-     * UsersStaticWebPageGenerator constructor.
-     */
-    public function __construct()
-    {
-    }
-
-    public function generateFile(array $users)
+    public function generateFile(array $users): void
     {
         $f = fopen("html/users.html", 'w');
         fwrite($f, "<!doctype html>");

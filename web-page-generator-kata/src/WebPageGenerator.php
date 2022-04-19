@@ -13,7 +13,7 @@ class WebPageGenerator extends Command
         // ...
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $users = [];
 
@@ -31,5 +31,7 @@ class WebPageGenerator extends Command
 
         $generator = new UsersStaticWebPageGenerator();
         $generator->generateFile($users);
+
+        return 0;
     }
 }
