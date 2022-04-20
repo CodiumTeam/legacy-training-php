@@ -10,7 +10,7 @@ run:
 
 # Docker commands
 docker-build:
-	docker build -t codiumteam/legacy-training-php:webpage-generator .
+	docker build -t codiumteam/legacy-training-php:webpage-generator -f ../Dockerfile .
 
 docker-run:
 	@docker run --rm -v ${PWD}:/code codiumteam/legacy-training-php:webpage-generator make run
