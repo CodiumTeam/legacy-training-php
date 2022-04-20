@@ -1,0 +1,14 @@
+{
+    "name": "codium/trivia-golden-master",
+    "authors": [
+        {
+            "name": "Codium",
+            "email": "info@codium.team"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Trivia\\": "src"
+        }
+    }
+}

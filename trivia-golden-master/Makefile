@@ -2,12 +2,18 @@ default:
 	@printf "$$HELP"
 
 # Local commands
+dependencies:
+	composer install
 run:
 	php ./src/GameRunner.php
 
 # Docker commands
+
+docker-build:
+	docker build -t codiumteam/legacy-training-php:trivia-golden-master -f ../Dockerfile .
+
 docker-run:
-	@docker run --rm -v ${PWD}:/opt/project -w /opt/project php:7.2 make run
+	@docker run --rm -v ${PWD}:/code codiumteam/legacy-training-php:trivia-golden-master make run
 define HELP
 # Local commands
 	- make run\t\tRun the code
