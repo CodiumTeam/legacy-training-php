@@ -2,15 +2,12 @@
     "name": "codium/print-date",
     "authors": [
         {
-            "name": "Luis Rovirosa Mairlot",
-            "email": "luis@codium.team"
-        },
-        {
-            "name": "Jordi Anguela",
-            "email": "jordi@codium.team"
+            "name": "Codium",
+            "email": "info@codium.team"
         }
     ],
     "require": {
+        "php": "^8",
         "phpunit/phpunit": "^9",
         "ext-json": "*"
     },
