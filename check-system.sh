@@ -39,14 +39,25 @@ function validateDocker() {
 }
 
 validateDocker
-validateKata web-page-generator-kata "cd web-page-generator-kata" "make docker-build" "make docker-run"
-validateKata tennis-refactoring-kata "cd tennis-refactoring-kata" "make docker-build" "make docker-tests"
-validateKata user-registration-refactoring-kata "cd user-registration-refactoring-kata" "make docker-build" "make docker-tests"
-validateKata weather-kata "cd weather-kata" "make docker-build" "make docker-tests"
-validateKata trip-service-kata "cd trip-service-kata" "make docker-build" "make docker-tests"
-validateKata gilded-rose-golden-master "cd gilded-rose-golden-master" "make docker-run"
-validateKata trivia-golden-master "cd trivia-golden-master" "make docker-run"
-validateKata print-date "cd print-date" "make docker-build" "make docker-tests"
+
+validateKata "run web page generator kata" "cd web-page-generator-kata" "make docker-run"
+validateKata "run tennis" "cd tennis-refactoring-kata" "make docker-tests"
+validateKata "run user registration" "cd user-registration-refactoring-kata" "make docker-tests"
+validateKata "run weather kata" "cd weather-kata" "make docker-tests"
+validateKata "run trip service" "cd trip-service-kata" "make docker-tests"
+validateKata "run gilded rose golden master" "cd gilded-rose-golden-master" "make docker-run"
+validateKata "run trivia golden master" "cd trivia-golden-master" "make docker-run"
+validateKata "run print date" "cd print-date" "make docker-tests"
+
+
+validateKata "build web page generator kata" "cd web-page-generator-kata" "make docker-build" "make docker-run"
+validateKata "build tennis" "cd tennis-refactoring-kata" "make docker-build" "make docker-tests"
+validateKata "build user registration" "cd user-registration-refactoring-kata" "make docker-build" "make docker-tests"
+validateKata "build weather kata" "cd weather-kata" "make docker-build" "make docker-tests"
+validateKata "build trip service" "cd trip-service-kata" "make docker-build" "make docker-tests"
+validateKata "build gilded rose golden master" "cd gilded-rose-golden-master" "make docker-run"
+validateKata "build trivia golden master" "cd trivia-golden-master" "make docker-run"
+validateKata "build print date" "cd print-date" "make docker-build" "make docker-tests"
 
 if [ -z "$ERROR" ]; then
   echo "Congratulations! You are ready for the training!"
