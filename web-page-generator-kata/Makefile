@@ -10,10 +10,10 @@ run:
 
 # Docker commands
 docker-build:
-	docker build -t php-docker-bootstrap .
+	docker build -t codiumteam/legacy-training-php:webpage-generator .
 
 docker-run:
-	@docker run --rm -v ${PWD}:/opt/project php-docker-bootstrap make run
+	@docker run --rm -v ${PWD}:/code codiumteam/legacy-training-php:webpage-generator make run
 
 define HELP
 # Local commands
