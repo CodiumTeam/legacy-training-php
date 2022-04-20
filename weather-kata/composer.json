@@ -1,10 +1,9 @@
 {
     "name": "codium/weather-kata",
-    "description": "Material for the Clean Code training",
+    "description": "Material for the Working with Legacy Code training",
     "require": {
-        "php": "^7",
-        "guzzlehttp/guzzle": "^6",
-        "phpmetrics/phpmetrics": "^2"
+        "php": "^8",
+        "guzzlehttp/guzzle": "^7"
     },
     "require-dev": {
         "phpunit/phpunit": "^9"

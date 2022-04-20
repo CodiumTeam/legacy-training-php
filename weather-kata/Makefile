@@ -4,25 +4,18 @@
 default:
 	@printf "$$HELP"
 
-# Dependencies
 dependencies:
 	composer install
-docker-build:
-	docker build -t php-docker-bootstrap .
-	@docker run --rm -v ${PWD}:/code php-docker-bootstrap make dependencies
 
-# Tests
 .PHONY: tests
 tests:
 	./vendor/bin/phpunit
-docker-tests:
-	docker run --rm -v ${PWD}:/code -w /code php-docker-bootstrap make tests
 
-# Complexity
-complexity:
-	./vendor/bin/phpmetrics src/
-docker-complexity:
-	docker run --rm -v ${PWD}:/opt/project -w /opt/project php:7.4 make complexity
+docker-build:
+	docker build -t codiumteam/legacy-training-php:weather -f ../Dockerfile .
+
+docker-tests:
+	docker run --rm -v ${PWD}:/code codiumteam/legacy-training-php:weather make tests
 
 define HELP
 # Local commands
