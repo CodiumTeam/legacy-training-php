@@ -12,13 +12,13 @@ coverage:
 
 # Docker commands
 docker-build:
-	docker build -t php-docker-bootstrap .
-	@docker run --rm -v ${PWD}:/opt/project php-docker-bootstrap make dependencies
+	docker build -t codiumteam/legacy-training-php:trip-service -f ../Dockerfile .
 
 docker-tests:
-	@docker run --rm -v ${PWD}:/opt/project php-docker-bootstrap make tests
+	@docker run --rm -v ${PWD}:/code codiumteam/legacy-training-php:trip-service make tests
+
 docker-coverage:
-	@docker run --rm -v ${PWD}:/opt/project php-docker-bootstrap make coverage
+	@docker run --rm -v ${PWD}:/code codiumteam/legacy-training-php:trip-service make coverage
 
 define HELP
 # Local commands
