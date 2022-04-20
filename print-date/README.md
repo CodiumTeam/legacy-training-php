@@ -18,7 +18,7 @@ On Linux and Mac
 
 in Windows using docker
 
-    docker run -v ${PWD}:/opt/project php-docker-bootstrap make
+    docker run --rm -v ${PWD}:/code codiumteam/legacy-training-php:print-date make
 
 # Learnings
 How to use Prophecy to generate the doubles.

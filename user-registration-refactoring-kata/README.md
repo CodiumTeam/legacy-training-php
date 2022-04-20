@@ -29,7 +29,7 @@ On Linux and Mac
 
 in Windows using docker
 
-    docker run -v ${PWD}:/opt/project php-docker-bootstrap make
+    docker run --rm -v ${PWD}:/code codiumteam/legacy-training-php:user-registration make
 
           
 ## Authors

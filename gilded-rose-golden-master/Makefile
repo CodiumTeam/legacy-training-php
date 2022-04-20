@@ -1,4 +1,6 @@
-default:
+default: docker-run
+
+help:
 	@printf "$$HELP"
 
 # Local commands

@@ -1,4 +1,6 @@
-default:
+default: docker-tests
+
+help:
 	@printf "$$HELP"
 
 # Local commands

@@ -5,6 +5,15 @@
 - Practice refactors / automated refactors
 - Enjoy the benefits of having a test harness
 
+## Run the kata
+On Linux and Mac
+
+    make
+
+in Windows using docker
+
+    docker run --rm -v ${PWD}:/code codiumteam/legacy-training-php:tennis-refactoring make
+
 ## Context
 Imagine you work for a consultancy company, and one of your colleagues has been doing some work for the Tennis Society. 
 The contract is for 10 hours billable work, and your colleague has spent 8.5 hours working on it.

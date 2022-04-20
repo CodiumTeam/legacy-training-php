@@ -14,7 +14,7 @@ On Linux and Mac
 
 in Windows using docker
 
-    docker run -v ${PWD}:/opt/project php-docker-bootstrap make
+    docker run --rm -v ${PWD}:/code codiumteam/legacy-training-php:weather make
 	
 ## Authors
 Luis Rovirosa [@luisrovirosa](https://www.twitter.com/luisrovirosa)
@@ -22,4 +22,3 @@ Luis Rovirosa [@luisrovirosa](https://www.twitter.com/luisrovirosa)
 Jordi Anguela [@jordianguela](https://www.twitter.com/jordianguela)
 
 [Original repository](https://github.com/CodiumTeam/weather-kata)
-	
