@@ -9,10 +9,9 @@ run:
 
 # Docker commands
 docker-build:
-	docker build -t php-docker-bootstrap .
-	@docker run --rm -v ${PWD}:/opt/project php-docker-bootstrap make dependencies
+	docker build -t codiumteam/legacy-training-php:gilded-rose-golden-master -f ../Dockerfile .
 docker-run:
-	@docker run --rm -v ${PWD}:/opt/project -w /opt/project php-docker-bootstrap make run
+	@docker run --rm -v ${PWD}:/code codiumteam/legacy-training-php:gilded-rose-golden-master make run
 define HELP
 # Local commands
 	- make dependencies\tInstall the dependencies.
