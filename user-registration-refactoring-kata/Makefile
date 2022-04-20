@@ -9,22 +9,15 @@ tests:
 	./vendor/bin/phpunit
 coverage:
 	./vendor/bin/phpunit --coverage-text
-server-start:
-	php bin/console server:run 0.0.0.0
-request:
-	curl -X POST 'http://localhost:8000/users?email=info@codium.team&name=Luis%20Rovirosa&password=validPassword1234_'
-	@printf "\n"
 
 # Docker commands
 docker-build:
-	docker build -t codiumteam/legacy-training-php:user-registration .
+	docker build -t codiumteam/legacy-training-php:user-registration -f ../Dockerfile .
 
 docker-tests:
 	@docker run --rm -v ${PWD}:/code codiumteam/legacy-training-php:user-registration make tests
 docker-coverage:
 	@docker run --rm -v ${PWD}:/code codiumteam/legacy-training-php:user-registration make coverage
-docker-server-start:
-	@docker run --rm -i -v ${PWD}:/code -p 8000:8000 codiumteam/legacy-training-php:user-registration make server-start
 
 define HELP
 # Local commands
@@ -35,10 +28,7 @@ define HELP
 	- make docker-tests\t\tRun the tests on docker
 # Extra commands (not required for the training)
 	- make coverage\t\t\tRun the code coverage
-	- make server-start\t\tTo start the webserver
-	- make request\t\t\tMake an HTTP request to the server registering a user
 	- make docker-coverage\t\tRun the code coverage
-	- make docker-server-start\tTo start the webserver on docker
  Please execute "make <command>". Example make help
 
 endef

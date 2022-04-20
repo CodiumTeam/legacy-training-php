@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Framework;
+namespace App\Controller;
 
 use App\Infrastructure\DoctrineUserRepository;
 use App\Model\User;

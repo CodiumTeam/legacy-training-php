@@ -2,12 +2,12 @@
 
 namespace Tests\App\Framework;
 
-use App\Framework\UserRegistrationController;
+use App\Controller\UserRegistrationController;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class UserRegistrationControllerTest extends WebTestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
         UserRegistrationController::$orm = null;
