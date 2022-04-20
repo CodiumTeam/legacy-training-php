@@ -17,14 +17,14 @@ request:
 
 # Docker commands
 docker-build:
-	docker build -t codiumteam/legacy-training-php .
-	@docker run --rm -v ${PWD}:/code codiumteam/legacy-training-php make dependencies
+	docker build -t codiumteam/legacy-training-php:user-registration .
+
 docker-tests:
-	@docker run --rm -v ${PWD}:/code codiumteam/legacy-training-php make tests
+	@docker run --rm -v ${PWD}:/code codiumteam/legacy-training-php:user-registration make tests
 docker-coverage:
-	@docker run --rm -v ${PWD}:/code codiumteam/legacy-training-php make coverage
+	@docker run --rm -v ${PWD}:/code codiumteam/legacy-training-php:user-registration make coverage
 docker-server-start:
-	@docker run --rm -i -v ${PWD}:/code -p 8000:8000 codiumteam/legacy-training-php make server-start
+	@docker run --rm -i -v ${PWD}:/code -p 8000:8000 codiumteam/legacy-training-php:user-registration make server-start
 
 define HELP
 # Local commands
