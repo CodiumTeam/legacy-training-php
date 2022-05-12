@@ -13,11 +13,24 @@ dependencies:
 tests:
 	./vendor/bin/phpunit
 
+.PHONY: coverage
+coverage:
+	./vendor/bin/phpunit --coverage-html coverage
+	@printf "\nOpen coverage/index.html to see the code coverage\n"
+
+
+.PHONY: docker-build
 docker-build:
 	docker build -t codiumteam/legacy-training-php:weather -f ../Dockerfile .
 
+.PHONY: docker-tests
 docker-tests:
 	docker run --rm -v ${PWD}:/code codiumteam/legacy-training-php:weather make tests
+
+.PHONY: docker-coverage
+docker-coverage:
+	@docker run --rm -v ${PWD}:/code codiumteam/legacy-training-php:weather make coverage
+
 
 define HELP
 # Local commands
