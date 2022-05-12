@@ -1,6 +1,6 @@
 <?php
 
-namespace GildedRose\Test;
+namespace GildedRose\Tests;
 
 use GildedRose\GildedRose;
 use GildedRose\Item;
@@ -9,15 +9,29 @@ use PHPUnit\Framework\TestCase;
 class GildedRoseTest extends TestCase
 {
 
-    /** @test */
-    public function changeMe()
+    /**
+     * @test
+     * @dataProvider productNamesThatDecreaseQuality
+     */
+    public function the_minimum_quality_is_0(string $name): void
     {
         /** @var Item[] $items */
-        $items = array(new Item("aName", 10, 20));
+        $items = [
+            new Item($name, 10, 0),
+        ];
         $gildedRose = new GildedRose($items);
 
         $gildedRose->update_quality();
 
-        $this->assertEquals("aName", $items[0]->name);
+        $this->assertEquals(0, $items[0]->quality, $name);
+    }
+
+    public function productNamesThatDecreaseQuality(): array
+    {
+        return [
+            ["Cookies"],
+            ["Pencil"],
+            ["Book"],
+        ];
     }
 }

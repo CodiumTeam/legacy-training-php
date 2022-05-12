@@ -12,9 +12,9 @@ tests:
 .PHONY: coverage
 coverage:
 	./vendor/bin/phpunit --coverage-html coverage
-	@printf "\nOpen coverage/index.html to see the code coverage\n"
+	@printf "\nOpen  /index.html to see the code coverage\n"
 mutations:
-	./vendor/bin/infection
+	./vendor/bin/infection --help
 	@printf "\nOpen infection.log to see the mutations\n"
 
 # Docker commands

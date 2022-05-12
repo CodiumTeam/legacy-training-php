@@ -3,7 +3,13 @@
 namespace App\Controller;
 
 use App\Infrastructure\DoctrineUserRepository;
+use App\Model\InvalidPasswordException;
 use App\Model\User;
+use App\Model\UserAlreadyExistsException;
+use App\UseCase\PHPMailerEmailSender;
+use App\UseCase\RegisterUser;
+use App\UseCase\UserOrmRepositoyAdapter;
+use PHPMailer\PHPMailer\Exception;
 use PHPMailer\PHPMailer\PHPMailer;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -13,37 +19,31 @@ use Symfony\Component\Routing\Annotation\Route;
 class UserRegistrationController
 {
     public static ?DoctrineUserRepository $orm;
+    private RegisterUser $registerUser;
+
+    public function __construct()
+    {
+    }
 
     /** @Route("/users", methods={"POST"}, name="register_user") */
     public function registerUser(Request $request): Response
     {
-        if (strlen($request->get('password')) <= 8 || strpos($request->get('password'), '_') === false) {
+        $this->registerUser = new RegisterUser(new PHPMailerEmailSender(), new UserOrmRepositoyAdapter(self::orm()));
+        try {
+            $user = $this->registerUser->extracted(
+                $request->get('password'),
+                $request->get('email'),
+                $request->get('name')
+            );
+
+            return new JsonResponse($user, Response::HTTP_CREATED);
+        } catch (InvalidPasswordException $e) {
+
             return new Response('Password is not valid', Response::HTTP_BAD_REQUEST);
-        }
-        if (self::orm()->findByEmail($request->get('email')) !== null) {
+        } catch (UserAlreadyExistsException $e) {
             return new Response("The email is already in use", Response::HTTP_BAD_REQUEST);
+        } catch (Exception $e) {
         }
-
-        $user = new User((string) rand(0, 10000), $request->get('name'), $request->get('email'), $request->get('password'));
-        self::orm()->save($user);
-
-        $mail = new PHPMailer(true);
-        $mail->isSMTP();
-        $mail->Host = 'smtp1.example.com;smtp2.example.com';
-        $mail->SMTPAuth = true;
-        $mail->Username = 'user@example.com';
-        $mail->Password = 'secret';
-
-        $mail->setFrom("noreply@codium.team");
-        $mail->addAddress($request->get('email'));
-
-        $mail->isHTML(true);
-        $mail->Subject = "Welcome to Codium, " . $request->get('name');
-        $mail->Body = 'This is the HTML message body <b>in bold!</b>';
-//        $mail->send();
-
-        $response = ['email' => $user->email(), 'name' => $user->name()];
-        return new JsonResponse($response, Response::HTTP_CREATED);
     }
 
     public static function orm(): DoctrineUserRepository
