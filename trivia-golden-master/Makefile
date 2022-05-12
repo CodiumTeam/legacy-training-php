@@ -25,4 +25,8 @@ define HELP
 
 endef
 
+.PHONY: docker-tests
+docker-tests:
+	 docker run --rm -v ${PWD}:/code codiumteam/legacy-training-php:trivia-golden-master make run > current.log && diff current.log golden.log
+
 export HELP
