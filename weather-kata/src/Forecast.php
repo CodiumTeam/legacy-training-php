@@ -11,7 +11,7 @@ class Forecast
     {
         // When date is not provided we look for the current prediction
         if (!$datetime) {
-            $datetime = new DateTime();
+            $datetime = $this->today();
         }
 
         // If there are predictions
@@ -19,15 +19,11 @@ class Forecast
 
 
             // Create a Guzzle Http Client
-            $client = new Client();
-
-            // Find the id of the city on metawheather
-            $woeid = json_decode($client->get("https://www.metaweather.com/api/location/search/?query=$city")->getBody()->getContents(),
-                true)[0]['woeid'];
+            $contents = $this->requestWoeid($city);
+            $woeid = json_decode($contents,true)[0]['woeid'];
 
             // Find the predictions for the city
-            $results = json_decode($client->get("https://www.metaweather.com/api/location/$woeid")->getBody()->getContents(),
-                true)['consolidated_weather'];
+            $results = json_decode($this->requestPrediction($woeid),true)['consolidated_weather'];
             foreach ($results as $result) {
 
                 // When the date is the expected
@@ -43,5 +39,38 @@ class Forecast
         } else {
             return "";
         }
+    }/**
+ * @param string $city
+ * @return array
+ * @throws \GuzzleHttp\Exception\GuzzleException
+ */
+    protected function requestWoeid(string $city): string
+    {
+        $client = new Client();
+
+        // Find the id of the city on metawheather
+        $contents = $client->get("https://www.metaweather.com/api/location/search/?query=$city")->getBody()->getContents();
+
+        return $contents;
+    }
+
+    /**
+     * @param Client $client
+     * @param mixed $woeid
+     * @return string
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    protected function requestPrediction(mixed $woeid): string
+    {
+        $client = new Client();
+        return $client->get("https://www.metaweather.com/api/location/$woeid")->getBody()->getContents();
+    }
+
+    /**
+     * @return DateTime
+     */
+    protected function today(): DateTime
+    {
+        return new DateTime();
     }
 }
