@@ -16,5 +16,8 @@
             "PrintDate\\": "src",
             "PrintDate\\Test\\": "tests"
         }
+    },
+    "require-dev": {
+        "phpspec/prophecy-phpunit": "^2.0"
     }
 }
