@@ -6,9 +6,12 @@ use PHPUnit\Framework\TestCase;
 use PrintDate\Calendar;
 use PrintDate\PrintDate;
 use PrintDate\Printer;
+use Prophecy\PhpUnit\ProphecyTrait;
 
 class PrintDateTest extends TestCase
 {
+    use ProphecyTrait;
+
     /** @test */
     public function it_test_system_methods()
     {
