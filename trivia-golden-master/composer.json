@@ -10,5 +10,11 @@
         "psr-4": {
             "Trivia\\": "src"
         }
+    },
+    "require": {
+        "php": "^8"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9"
     }
 }

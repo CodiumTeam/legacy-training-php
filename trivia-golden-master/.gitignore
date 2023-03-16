@@ -1,2 +1,3 @@
 infection.log
 coverage
+.phpunit.result.cache
