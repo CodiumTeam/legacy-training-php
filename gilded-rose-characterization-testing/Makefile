@@ -1,9 +1,6 @@
 default: docker-tests
-
-help:
-	@printf "$$HELP"
-
 # Local commands
+.PHONY: dependencies
 dependencies:
 	composer install
 .PHONY: tests
@@ -13,33 +10,30 @@ tests:
 coverage:
 	./vendor/bin/phpunit --coverage-html coverage
 	@printf "\nOpen coverage/index.html to see the code coverage\n"
+
+.PHONY: mutations
 mutations:
 	./vendor/bin/infection
 	@printf "\nOpen infection.log to see the mutations\n"
 
 # Docker commands
+.PHONY: docker-tests
+docker-tests:
+	@docker run --rm -v ${PWD}:/code codiumteam/legacy-training-php:gilded-rose-characterization make tests
+
+.PHONY: docker-coverage
+docker-coverage:
+	@docker run --rm -v ${PWD}:/code codiumteam/legacy-training-php:gilded-rose-characterization make coverage
+
+.PHONY: docker-mutations
+docker-mutations:
+	@docker run --rm -v ${PWD}:/code codiumteam/legacy-training-php:gilded-rose-characterization phpdbg -qrr ./vendor/bin/infection
+
+.PHONY: docker-build
 docker-build:
 	docker build -t codiumteam/legacy-training-php:gilded-rose-characterization -f ../Dockerfile .
 
-docker-tests:
-	@docker run --rm -v ${PWD}:/code codiumteam/legacy-training-php:gilded-rose-characterization make tests
-docker-coverage:
-	@docker run --rm -v ${PWD}:/code codiumteam/legacy-training-php:gilded-rose-characterization make coverage
-docker-mutations:
-	@docker run --rm -v ${PWD}:/code codiumteam/legacy-training-php:gilded-rose-characterization phpdbg -qrr ./vendor/bin/infection
-define HELP
-# Local commands
-	- make dependencies\tInstall the dependencies using composer
-	- make tests\t\tRun the tests
-	- make coverage\t\tRun the code coverage
-	- make mutations\t\tRun the infection mutation testing
-# Docker commands
-	- make docker-build\tCreates a PHP image with xdebug and install the dependencies
-	- make docker-tests\tRun the tests on docker
-	- make docker-coverage\tRun the code coverage on docker
-	- make docker-mutations\t\tRun the infection mutation testing on docker
- Please execute "make <command>". Example make help
+.PHONY: docker-update-composer-lock
+docker-update-composer-lock:
+	docker run --rm -v ${PWD}:/code codiumteam/legacy-training-php:gilded-rose-characterization composer update
 
-endef
-
-export HELP

@@ -1,28 +1,22 @@
 default: docker-run
 
-help:
-	@printf "$$HELP"
-
 # Local commands
+.PHONY: dependencies
 dependencies:
 	composer dump-autoload
+.PHONY: run
 run:
 	php ./src/Main.php
 
 # Docker commands
-docker-build:
-	docker build -t codiumteam/legacy-training-php:gilded-rose-golden-master -f ../Dockerfile .
+.PHONY: docker-run
 docker-run:
 	@docker run --rm -v ${PWD}:/code codiumteam/legacy-training-php:gilded-rose-golden-master make run
-define HELP
-# Local commands
-	- make dependencies\tInstall the dependencies.
-	- make run\t\tRun the code
-# Docker commands
-	- make docker-build\tInstall the dependencies using docker.
-	- make docker-run\tRun the program on docker
- Please execute "make <command>". Example make help
 
-endef
+.PHONY: docker-build
+docker-build:
+	docker build -t codiumteam/legacy-training-php:gilded-rose-golden-master -f ../Dockerfile .
 
-export HELP
+.PHONY: docker-update-composer-lock
+docker-update-composer-lock:
+	docker run --rm -v ${PWD}:/code codiumteam/legacy-training-php:gilded-rose-golden-master composer update

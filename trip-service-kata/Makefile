@@ -1,38 +1,31 @@
 default: docker-tests
 
-help:
-	@printf "$$HELP"
-
 # Local commands
+.PHONY: dependencies
 dependencies:
 	composer install
 .PHONY: tests
 tests:
 	./vendor/bin/phpunit
+
+.PHONY: coverage
 coverage:
 	./vendor/bin/phpunit --coverage-text
 
 # Docker commands
-docker-build:
-	docker build -t codiumteam/legacy-training-php:trip-service -f ../Dockerfile .
 
+.PHONY: docker-tests
 docker-tests:
 	@docker run --rm -v ${PWD}:/code codiumteam/legacy-training-php:trip-service make tests
 
+.PHONY: docker-coverage
 docker-coverage:
 	@docker run --rm -v ${PWD}:/code codiumteam/legacy-training-php:trip-service make coverage
 
-define HELP
-# Local commands
-	- make dependencies\tInstall the dependencies using composer
-	- make tests\t\tRun the tests
-	- make coverage\t\tRun the code coverage
-# Docker commands
-	- make docker-build\tCreates a PHP image with xdebug and install the dependencies
-	- make docker-tests\tRun the tests on docker
-	- make docker-coverage\tRun the code coverage
- Please execute "make <command>". Example make help
+.PHONY: docker-build
+docker-build:
+	docker build -t codiumteam/legacy-training-php:trip-service -f ../Dockerfile .
 
-endef
-
-export HELP
+.PHONY: docker-update-composer-lock
+docker-update-composer-lock:
+	docker run --rm -v ${PWD}:/code codiumteam/legacy-training-php:trip-service composer update
