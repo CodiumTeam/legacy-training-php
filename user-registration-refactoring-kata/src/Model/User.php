@@ -4,22 +4,10 @@ namespace App\Model;
 
 class User
 {
-    /**
-     * @var string
-     */
-    private $id;
-    /**
-     * @var string
-     */
-    private $name;
-    /**
-     * @var string
-     */
-    private $email;
-    /**
-     * @var string
-     */
-    private $password;
+    private string $id;
+    private string $name;
+    private string $email;
+    private string $password;
 
     public function __construct(string $id, string $name, string $email, string $password)
     {
@@ -29,37 +17,23 @@ class User
         $this->password = $password;
     }
 
-    /**
-     * @return string
-     */
     public function id(): string
     {
         return $this->id;
     }
 
-    /**
-     * @return string
-     */
     public function name(): string
     {
         return $this->name;
     }
 
-    /**
-     * @return string
-     */
     public function email(): string
     {
         return $this->email;
     }
 
-    /**
-     * @return string
-     */
     public function password(): string
     {
         return $this->password;
     }
-    
-    
 }

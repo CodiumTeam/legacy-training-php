@@ -6,7 +6,7 @@ use App\Model\User;
 
 class DoctrineUserRepository
 {
-    private $users;
+    private array $users;
 
     public function __construct()
     {
