@@ -15,13 +15,13 @@ class UserRegistrationController
     public static ?DoctrineUserRepository $orm;
 
     /** @Route("/users", methods={"POST"}, name="register_user") */
-    public function registerUser(Request $request): Response
+    public function registerUser(Request $request): JsonResponse
     {
         if (strlen($request->get('password')) <= 8 || strpos($request->get('password'), '_') === false) {
-            return new Response('Password is not valid', Response::HTTP_BAD_REQUEST);
+            return new JsonResponse('Password is not valid', Response::HTTP_BAD_REQUEST);
         }
         if (self::orm()->findByEmail($request->get('email')) !== null) {
-            return new Response("The email is already in use", Response::HTTP_BAD_REQUEST);
+            return new JsonResponse("The email is already in use", Response::HTTP_BAD_REQUEST);
         }
 
         $user = new User((string) rand(0, 10000), $request->get('name'), $request->get('email'), $request->get('password'));

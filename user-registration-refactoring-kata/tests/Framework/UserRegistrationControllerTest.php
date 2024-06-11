@@ -53,7 +53,7 @@ class UserRegistrationControllerTest extends WebTestCase
         $client->request('POST', '/users?name=Codium&email=my@email.com&password=myPass_1');
 
         $this->assertEquals(400, $client->getResponse()->getStatusCode());
-        $this->assertEquals('Password is not valid', $client->getResponse()->getContent());
+        $this->assertEquals('Password is not valid', json_decode($client->getResponse()->getContent()));
     }
     /** @test */
     public function should_fail_when_password_does_not_contain_underscore(): void
@@ -63,7 +63,7 @@ class UserRegistrationControllerTest extends WebTestCase
         $client->request('POST', '/users?name=Codium&email=my@email.com&password=myPass1234');
 
         $this->assertEquals(400, $client->getResponse()->getStatusCode());
-        $this->assertEquals('Password is not valid', $client->getResponse()->getContent());
+        $this->assertEquals('Password is not valid', json_decode($client->getResponse()->getContent()));
     }
     /** @test */
     public function should_fail_when_email_is_used(): void
@@ -74,6 +74,6 @@ class UserRegistrationControllerTest extends WebTestCase
         $client->request('POST', '/users?name=Codium&email=my@email.com&password=myPass_1234');
 
         $this->assertEquals(400, $client->getResponse()->getStatusCode());
-        $this->assertEquals('The email is already in use', $client->getResponse()->getContent());
+        $this->assertEquals('The email is already in use', json_decode($client->getResponse()->getContent()));
     }
 }
