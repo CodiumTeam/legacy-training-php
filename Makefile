@@ -9,9 +9,9 @@ docker-update-composer-lock: docker-update-composer-lock-$(KATA_DIRECTORIES)
 docker-build-$(KATA_DIRECTORIES):
 	cd $(subst docker-build-,,$@) && make docker-build
 
-.PHONY: docker-update-composer-lock-$(KATA_DIRECTORIES)
-docker-update-composer-lock-$(KATA_DIRECTORIES):
-	cd $(subst docker-update-composer-lock-,,$@) && make docker-update-composer-lock
+#.PHONY: docker-update-composer-lock-$(KATA_DIRECTORIES)
+#docker-update-composer-lock-$(KATA_DIRECTORIES):
+	#cd $(subst docker-update-composer-lock-,,$@) && make docker-update-composer-lock
 
 .PHONY: docker-push
 docker-push:
