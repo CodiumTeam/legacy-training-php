@@ -14,20 +14,20 @@ coverage:
 .PHONY: mutations
 mutations:
 	./vendor/bin/infection
-	@printf "\nOpen infection.log to see the mutations\n"
+	@printf "\nOpen './infection.log' to see the mutations\n"
 
 # Docker commands
 .PHONY: docker-tests
 docker-tests:
-	@docker run --rm -v ${PWD}:/code codiumteam/legacy-training-php:gilded-rose-characterization make tests
+	@docker run --rm -v ${PWD}:/code -v /code/vendor codiumteam/legacy-training-php:gilded-rose-characterization make tests
 
 .PHONY: docker-coverage
 docker-coverage:
-	@docker run --rm -v ${PWD}:/code codiumteam/legacy-training-php:gilded-rose-characterization make coverage
+	@docker run --rm -v ${PWD}:/code -v /code/vendor codiumteam/legacy-training-php:gilded-rose-characterization make coverage
 
 .PHONY: docker-mutations
 docker-mutations:
-	@docker run --rm -v ${PWD}:/code codiumteam/legacy-training-php:gilded-rose-characterization phpdbg -qrr ./vendor/bin/infection
+	@docker run --rm -v ${PWD}:/code -v /code/vendor codiumteam/legacy-training-php:gilded-rose-characterization make mutations
 
 .PHONY: docker-build
 docker-build:
@@ -36,4 +36,8 @@ docker-build:
 .PHONY: docker-update-composer-lock
 docker-update-composer-lock:
 	docker run --rm -v ${PWD}:/code codiumteam/legacy-training-php:gilded-rose-characterization composer update
+
+.PHONY: docker-dependencies
+docker-composer-install:
+	docker run --rm -v ${PWD}:/code codiumteam/legacy-training-php:gilded-rose-characterization make dependencies
 

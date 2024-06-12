@@ -28,7 +28,7 @@ function validateDocker() {
     fi
 
     echo -n "Validating docker mount permissions..."
-    (docker run --rm -v ${PWD}:/code codiumteam/legacy-training-php:webpage-generator ls) > /dev/null
+    (docker run --rm -v ${PWD}/web-page-generator-kata:/code codiumteam/legacy-training-php:webpage-generator ls) > /dev/null
     if [ $? -ne 0 ]; then
       echo "Error"
       echo "Are you sure that you have permissions to mount your volumes?"
@@ -40,14 +40,14 @@ function validateDocker() {
 
 validateDocker
 
-validateKata "run web page generator kata" "cd web-page-generator-kata" "make"
-validateKata "run tennis" "cd tennis-refactoring-kata" "make"
-validateKata "run user registration" "cd user-registration-refactoring-kata" "make"
-validateKata "run weather kata" "cd weather-kata" "make"
-validateKata "run trip service" "cd trip-service-kata" "make"
-validateKata "run gilded rose golden master" "cd gilded-rose-golden-master" "make"
-validateKata "run trivia golden master" "cd trivia-golden-master" "make"
-validateKata "run print date" "cd print-date" "make"
+validateKata "run web page generator kata" "cd web-page-generator-kata" "make" "make docker-composer-install"
+validateKata "run tennis" "cd tennis-refactoring-kata" "make" "make docker-composer-install"
+validateKata "run user registration" "cd user-registration-refactoring-kata" "make" "make docker-composer-install"
+validateKata "run weather kata" "cd weather-kata" "make" "make docker-composer-install"
+validateKata "run trip service" "cd trip-service-kata" "make" "make docker-composer-install"
+validateKata "run gilded rose golden master" "cd gilded-rose-golden-master" "make" "make docker-composer-install"
+validateKata "run trivia golden master" "cd trivia-golden-master" "make" "make docker-composer-install"
+validateKata "run print date" "cd print-date" "make" "make docker-composer-install"
 
 if [ -z "$ERROR" ]; then
   echo "Congratulations! You are ready for the training!"

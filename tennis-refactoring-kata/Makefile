@@ -19,12 +19,16 @@ docker-build:
 
 .PHONY: docker-tests
 docker-tests:
-	@docker run --rm -v ${PWD}:/code codiumteam/legacy-training-php:tennis-refactoring make tests
+	@docker run --rm -v ${PWD}:/code -v /code/vendor codiumteam/legacy-training-php:tennis-refactoring make tests
 
 .PHONY: docker-coverage
 docker-coverage:
-	@docker run --rm -v ${PWD}:/code codiumteam/legacy-training-php:tennis-refactoring make coverage
+	@docker run --rm -v ${PWD}:/code -v /code/vendor codiumteam/legacy-training-php:tennis-refactoring make coverage
 
 .PHONY: docker-update-composer-lock
 docker-update-composer-lock:
 	docker run --rm -v ${PWD}:/code codiumteam/legacy-training-php:tennis-refactoring composer update
+
+.PHONY: docker-dependencies
+docker-composer-install:
+	docker run --rm -v ${PWD}:/code codiumteam/legacy-training-php:tennis-refactoring make dependencies

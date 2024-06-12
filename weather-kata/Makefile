@@ -17,11 +17,11 @@ coverage:
 
 .PHONY: docker-tests
 docker-tests:
-	docker run --rm -v ${PWD}:/code codiumteam/legacy-training-php:weather make tests
+	docker run --rm -v ${PWD}:/code -v /code/vendor codiumteam/legacy-training-php:weather make tests
 
 .PHONY: docker-coverage
 docker-coverage:
-	@docker run --rm -v ${PWD}:/code codiumteam/legacy-training-php:weather make coverage
+	@docker run --rm -v ${PWD}:/code -v /code/vendor codiumteam/legacy-training-php:weather make coverage
 
 .PHONY: docker-build
 docker-build:
@@ -30,3 +30,7 @@ docker-build:
 .PHONY: docker-update-composer-lock
 docker-update-composer-lock:
 	docker run --rm -v ${PWD}:/code codiumteam/legacy-training-php:weather composer update
+
+.PHONY: docker-dependencies
+docker-composer-install:
+	docker run --rm -v ${PWD}:/code codiumteam/legacy-training-php:weather make dependencies

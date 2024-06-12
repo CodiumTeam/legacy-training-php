@@ -19,4 +19,4 @@ COPY composer.* ./
 RUN composer install
 
 # Volume to have access to the source code
-VOLUME ["/code", "/code/vendor"]
+VOLUME ["/code"]

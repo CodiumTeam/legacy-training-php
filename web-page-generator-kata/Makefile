@@ -13,7 +13,7 @@ run:
 # Docker commands
 .PHONY: docker-run
 docker-run:
-	@docker run --rm -v ${PWD}:/code codiumteam/legacy-training-php:webpage-generator make run
+	@docker run --rm -v ${PWD}:/code -v /code/vendor codiumteam/legacy-training-php:webpage-generator make run
 
 .PHONY: docker-build
 docker-build:
@@ -23,3 +23,6 @@ docker-build:
 docker-update-composer-lock:
 	docker run --rm -v ${PWD}:/code codiumteam/legacy-training-php:webpage-generator composer update
 
+.PHONY: docker-dependencies
+docker-composer-install:
+	docker run --rm -v ${PWD}:/code codiumteam/legacy-training-php:webpage-generator make dependencies
