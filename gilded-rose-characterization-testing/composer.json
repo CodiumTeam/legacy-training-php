@@ -1,5 +1,6 @@
 {
     "name": "codium/gilded-rose-characterization-testing",
+    "version": "1.0.0",
     "authors": [
         {
             "name": "Luis Rovirosa Mairlot",
@@ -18,6 +19,11 @@
         "psr-4": {
             "GildedRose\\": "src",
             "GildedRose\\Tests\\": "tests"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "infection/extension-installer": true
         }
     }
 }

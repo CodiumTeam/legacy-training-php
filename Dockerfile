@@ -1,6 +1,6 @@
 FROM php:8.3-cli
 
-MAINTAINER Codium <info@codium.team>
+LABEL org.opencontainers.image.authors="info@codium.team"
 
 # Composer and dependencies
 RUN apt-get update && \
