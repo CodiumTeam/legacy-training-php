@@ -1,7 +1,7 @@
 # Weather kata
-We cannot control the weather but we can predict it.
+We cannot control the weather, but we can predict it.
 
-This kata has a code that request the weather prediction from Metaweather.
+This kata has a code that request the weather prediction from different services.
 
 ## Goal
 - Test coupled code.
