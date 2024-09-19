@@ -5,7 +5,7 @@ dependencies:
 	composer install
 .PHONY: run
 run:
-	php ./src/GameRunner.php
+	@php ./src/GameRunner.php
 .PHONY: tests
 tests:
 	./vendor/bin/phpunit
