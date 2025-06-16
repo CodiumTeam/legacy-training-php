@@ -8,9 +8,7 @@ use PHPUnit\Framework\TestCase;
 
 class GildedRoseTest extends TestCase
 {
-
-    /** @test */
-    public function changeMe()
+    public function test_changeMe()
     {
         /** @var Item[] $items */
         $items = array(new Item("aName", 10, 20));
