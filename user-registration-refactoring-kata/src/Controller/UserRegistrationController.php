@@ -14,7 +14,7 @@ class UserRegistrationController
 {
     public static ?DoctrineUserRepository $orm;
 
-    /** @Route("/users", methods={"POST"}, name="register_user") */
+    #[Route('/users', name: 'register_user', methods: ["POST"])]
     public function registerUser(Request $request): JsonResponse
     {
         if (strlen($request->get('password')) <= 8 || strpos($request->get('password'), '_') === false) {
