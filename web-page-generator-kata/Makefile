@@ -13,7 +13,7 @@ run:
 # Docker commands
 .PHONY: docker-run
 docker-run:
-	@docker run --rm -v ${PWD}:/code -v /code/vendor codiumteam/legacy-training-php:webpage-generator make run
+	@docker run --rm -v ${PWD}:/code codiumteam/legacy-training-php:webpage-generator make run
 
 .PHONY: docker-build
 docker-build:
