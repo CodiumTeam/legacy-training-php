@@ -2,13 +2,12 @@
 
 declare(strict_types=1);
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 final class TennisGameTest extends TestCase
 {
-    /**
-     * @dataProvider provideScores
-     */
+    #[DataProvider('provideScores')]
     public function test_scores(int $score1, int $score2, string $expectedResult): void
     {
         $game = new TennisGame('player1', 'player2');
@@ -27,7 +26,7 @@ final class TennisGameTest extends TestCase
         self::assertSame($expectedResult, $game->getScore());
     }
 
-    public function provideScores(): iterable
+    public static function provideScores(): iterable
     {
         yield '0-0' => [0, 0, "Love-All"];
         yield '1-1' => [1, 1, "Fifteen-All"];
