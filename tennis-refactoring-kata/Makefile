@@ -6,6 +6,7 @@ default: docker-tests
 
 vendor: composer.lock
 	composer install
+	@touch vendor
 
 .PHONY: tests
 tests: vendor
@@ -22,3 +23,7 @@ docker-tests:
 .PHONY: docker-coverage
 docker-coverage:
 	@$(DOCKER_RUN_CMD) make coverage
+
+.PHONY: docker-update
+docker-update:
+	@$(DOCKER_RUN_CMD) composer update

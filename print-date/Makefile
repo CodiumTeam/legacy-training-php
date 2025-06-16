@@ -6,6 +6,7 @@ default: docker-tests
 
 vendor: composer.lock
 	composer install
+	@touch vendor
 
 .PHONY: tests
 tests: vendor

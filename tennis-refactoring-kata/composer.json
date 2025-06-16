@@ -1,5 +1,6 @@
 {
   "name": "codium/tennis-refactoring-kata",
+  "version": "1.0.0",
   "description": "Kata to practice refactoring",
   "authors": [
     {
