@@ -1,12 +1,17 @@
+UID:=$(shell id -u)
+GID:=$(shell id -g)
+PWD:=$(shell pwd)
+DOCKER_RUN_CMD:=docker run -t --rm -v $(PWD):/code -u $(UID):$(GID) codiumteam/legacy-training-php
 default: docker-tests
 
 # Local commands
-.PHONY: dependencies
-dependencies:
+vendor:
 	composer install
+
 .PHONY: tests
-tests:
+tests: vendor
 	composer run test
+
 .PHONY: coverage
 coverage:
 	composer run test -- --coverage-text
@@ -14,19 +19,13 @@ coverage:
 # Docker commands
 .PHONY: docker-tests
 docker-tests:
-	@docker run --rm -v ${PWD}:/code codiumteam/legacy-training-php:print-date make tests
+	@$(DOCKER_RUN_CMD) make tests
+
 .PHONY: docker-coverage
 docker-coverage:
-	@docker run --rm -v ${PWD}:/code codiumteam/legacy-training-php:print-date make coverage
-
-.PHONY: docker-build
-docker-build:
-	docker build -t codiumteam/legacy-training-php:print-date -f ../Dockerfile .
+	@$(DOCKER_RUN_CMD) make coverage
 
 .PHONY: docker-update-composer-lock
 docker-update-composer-lock:
-	docker run --rm -v ${PWD}:/code codiumteam/legacy-training-php:print-date composer update
+	@$(DOCKER_RUN_CMD) composer update
 
-.PHONY: docker-dependencies
-docker-composer-install:
-	docker run --rm -v ${PWD}:/code codiumteam/legacy-training-php:print-date make dependencies

@@ -1,7 +1,7 @@
 UID:=$(shell id -u)
 GID:=$(shell id -g)
 PWD:=$(shell pwd)
-DOCKER_RUN_CMD:=docker run --rm -v $(PWD):/code -u $(UID):$(GID) codiumteam/legacy-training-php
+DOCKER_RUN_CMD:=docker run -t --rm -v $(PWD):/code -u $(UID):$(GID) codiumteam/legacy-training-php
 default: docker-run
 
 # Local commands
@@ -23,8 +23,4 @@ docker-build:
 
 .PHONY: docker-update-composer-lock
 docker-update-composer-lock:
-	docker run --rm -v ${PWD}:/code codiumteam/legacy-training-php:webpage-generator composer update
-
-.PHONY: docker-dependencies
-docker-composer-install:
-	docker run --rm -v ${PWD}:/code codiumteam/legacy-training-php:webpage-generator make dependencies
+	@$(DOCKER_RUN_CMD) composer update

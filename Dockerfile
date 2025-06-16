@@ -15,11 +15,5 @@ RUN echo "xdebug.mode=coverage" >> /usr/local/etc/php/conf.d/docker-php-ext-xdeb
 
 WORKDIR /code
 
-RUN --mount=type=bind,source=composer.json,target=composer.json \
-    --mount=type=bind,source=composer.lock,target=composer.lock \
-    composer install
-
-COPY . .
-
 # Volume to have access to the source code
 VOLUME ["/code"]

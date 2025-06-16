@@ -1,26 +1,22 @@
+UID:=$(shell id -u)
+GID:=$(shell id -g)
+PWD:=$(shell pwd)
+DOCKER_RUN_CMD:=docker run -t --rm -v $(PWD):/code -u $(UID):$(GID) codiumteam/legacy-training-php
 default: docker-run
 
 # Local commands
-.PHONY: dependencies
-dependencies:
-	composer dump-autoload
+vendor:
+	composer install
+
 .PHONY: run
-run:
+run: vendor
 	php ./src/Main.php
 
 # Docker commands
 .PHONY: docker-run
 docker-run:
-	@docker run --rm -v ${PWD}:/code codiumteam/legacy-training-php:gilded-rose-golden-master make run
-
-.PHONY: docker-build
-docker-build:
-	docker build -t codiumteam/legacy-training-php:gilded-rose-golden-master -f ../Dockerfile .
+	@$(DOCKER_RUN_CMD) make run
 
 .PHONY: docker-update-composer-lock
 docker-update-composer-lock:
-	docker run --rm -v ${PWD}:/code codiumteam/legacy-training-php:gilded-rose-golden-master composer update
-
-.PHONY: docker-dependencies
-docker-composer-install:
-	docker run --rm -v ${PWD}:/code codiumteam/legacy-training-php:gilded-rose-golden-master make dependencies
+	@$(DOCKER_RUN_CMD) composer update

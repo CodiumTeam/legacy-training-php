@@ -4,8 +4,10 @@ namespace GildedRose\Test;
 
 use GildedRose\GildedRose;
 use GildedRose\Item;
+use PHPUnit\Framework\Attributes\CoversNamespace;
 use PHPUnit\Framework\TestCase;
 
+#[CoversNamespace("GildedRose")]
 class GildedRoseTest extends TestCase
 {
     public function test_changeMe()

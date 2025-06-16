@@ -1,43 +1,41 @@
+UID:=$(shell id -u)
+GID:=$(shell id -g)
+PWD:=$(shell pwd)
+DOCKER_RUN_CMD:=docker run -t --rm -v $(PWD):/code -u $(UID):$(GID) codiumteam/legacy-training-php
 default: docker-tests
-# Local commands
-.PHONY: dependencies
-dependencies:
+
+.PHONY: vendor
+vendor:
 	composer install
+
 .PHONY: tests
-tests:
+tests: vendor
 	composer run test
+
 .PHONY: coverage
-coverage:
+coverage: vendor
 	composer run test -- --coverage-html coverage
 	@printf "\nOpen coverage/index.html to see the code coverage\n"
 
 .PHONY: mutations
-mutations:
+mutations: vendor
 	./vendor/bin/infection
 	@printf "\nOpen './infection.log' to see the mutations\n"
 
 # Docker commands
 .PHONY: docker-tests
 docker-tests:
-	@docker run --rm -v ${PWD}:/code codiumteam/legacy-training-php:gilded-rose-characterization make tests
+	@$(DOCKER_RUN_CMD) make tests
 
 .PHONY: docker-coverage
 docker-coverage:
-	@docker run --rm -v ${PWD}:/code codiumteam/legacy-training-php:gilded-rose-characterization make coverage
+	@$(DOCKER_RUN_CMD) make coverage
 
 .PHONY: docker-mutations
 docker-mutations:
-	@docker run --rm -v ${PWD}:/code codiumteam/legacy-training-php:gilded-rose-characterization make mutations
-
-.PHONY: docker-build
-docker-build:
-	docker build -t codiumteam/legacy-training-php:gilded-rose-characterization -f ../Dockerfile .
+	@$(DOCKER_RUN_CMD) make mutations
 
 .PHONY: docker-update-composer-lock
 docker-update-composer-lock:
-	docker run --rm -v ${PWD}:/code codiumteam/legacy-training-php:gilded-rose-characterization composer update
-
-.PHONY: docker-dependencies
-docker-composer-install:
-	docker run --rm -v ${PWD}:/code codiumteam/legacy-training-php:gilded-rose-characterization make dependencies
+	@$(DOCKER_RUN_CMD) composer update
 
