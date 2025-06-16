@@ -5,8 +5,7 @@ use PHPUnit\Framework\TestCase;
 
 final class TriviaTest extends TestCase
 {
-    /** @test */
-    public function xxx(): void
+    public function test_xxx(): void
     {
         $this->assertEquals(true, true);
     }
