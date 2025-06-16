@@ -1,6 +1,9 @@
 {
     "name": "codium/weather-kata",
     "description": "Material for the Working with Legacy Code training",
+    "scripts": {
+      "test": "phpunit"
+    },
     "require": {
         "php": "^8.3",
         "guzzlehttp/guzzle": "^7"

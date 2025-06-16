@@ -7,7 +7,7 @@ dependencies:
 
 .PHONY: run
 run:
-	php bin/console web:generate
+	composer run test
 	@printf "Open html/users.html\n"
 
 # Docker commands

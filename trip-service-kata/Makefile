@@ -6,7 +6,7 @@ dependencies:
 	composer install
 .PHONY: tests
 tests:
-	./vendor/bin/phpunit
+	composer run test
 
 .PHONY: coverage
 coverage:

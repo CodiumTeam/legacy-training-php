@@ -3,6 +3,9 @@
     "license": "proprietary",
     "minimum-stability": "stable",
     "prefer-stable": true,
+    "scripts": {
+      "test": "phpunit"
+    },
     "require": {
         "php": "^8.3",
         "ext-ctype": "*",

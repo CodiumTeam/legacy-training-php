@@ -6,6 +6,9 @@
             "email": "info@codium.team"
         }
     ],
+    "scripts": {
+      "test": "phpunit"
+    },
     "require": {
         "php": "^8.3",
         "ext-json": "*",

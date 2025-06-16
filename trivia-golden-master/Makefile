@@ -8,7 +8,7 @@ run:
 	@php ./src/GameRunner.php
 .PHONY: tests
 tests:
-	./vendor/bin/phpunit
+	composer run test
 
 # Docker commands
 .PHONY: docker-run

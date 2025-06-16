@@ -11,6 +11,9 @@
             "email": "jordi@codium.team"
         }
     ],
+    "scripts": {
+      "test": "phpunit"
+    },
     "require": {
         "php": "^8.3",
         "phpunit/phpunit": "^12",
