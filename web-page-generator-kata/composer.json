@@ -18,6 +18,9 @@
         "php": "^8.4",
         "symfony/console": "^7.3.0"
     },
+    "require-dev": {
+        "roave/security-advisories": "dev-latest"
+    },
     "autoload": {
         "psr-4": {
             "": "src"

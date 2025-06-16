@@ -14,3 +14,7 @@ run: vendor
 .PHONY: docker-run
 docker-run:
 	@$(DOCKER_RUN_CMD) make run
+
+.PHONY: docker-update
+docker-update:
+	@$(DOCKER_RUN_CMD) composer update
