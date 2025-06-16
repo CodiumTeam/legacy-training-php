@@ -3,6 +3,7 @@
 namespace PrintDate\Test;
 
 use PHPUnit\Framework\TestCase;
+use PHPUnit\Util\Test;
 use PrintDate\Calendar;
 use PrintDate\PrintDate;
 use PrintDate\Printer;
@@ -12,8 +13,8 @@ class PrintDateTest extends TestCase
 {
     use ProphecyTrait;
 
-    /** @test */
-    public function it_test_system_methods()
+    #[Test]
+    public function it_test_system_methods(): void
     {
         $printDate = new PrintDate(new Printer(), new Calendar());
 

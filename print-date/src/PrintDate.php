@@ -4,16 +4,12 @@ namespace PrintDate;
 
 class PrintDate
 {
-    private $calendar;
-    private $printer;
 
-    public function __construct(Printer $printer, Calendar $calendar)
+    public function __construct(private readonly  Printer $printer, private readonly Calendar $calendar)
     {
-        $this->printer = $printer;
-        $this->calendar = $calendar;
     }
 
-    public function printCurrentDate()
+    public function printCurrentDate(): void
     {
         $now = $this->calendar->now();
         $this->printer->printLine($now);

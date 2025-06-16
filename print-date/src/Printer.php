@@ -4,7 +4,7 @@ namespace PrintDate;
 
 class Printer
 {
-    public  function printLine(string $line)
+    public  function printLine(string $line): void
     {
         echo $line;
     }
