@@ -4,7 +4,7 @@ PWD:=$(shell pwd)
 DOCKER_RUN_CMD:=docker run -t --rm -v $(PWD):/code -u $(UID):$(GID) codiumteam/legacy-training-php
 default: docker-run
 
-vendor:
+vendor: composer.lock
 	composer install
 
 .PHONY: run
