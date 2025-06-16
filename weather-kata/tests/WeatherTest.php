@@ -6,8 +6,7 @@ use PHPUnit\Framework\TestCase;
 
 class WeatherTest extends TestCase
 {
-    /** @test */
-    public function find_the_weather_of_today()
+    public function test_find_the_weather_of_today()
     {
         $this->assertEquals(true, true);
     }
