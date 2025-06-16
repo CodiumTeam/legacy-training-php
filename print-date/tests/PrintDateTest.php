@@ -2,8 +2,8 @@
 
 namespace PrintDate\Test;
 
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Util\Test;
 use PrintDate\Calendar;
 use PrintDate\PrintDate;
 use PrintDate\Printer;
