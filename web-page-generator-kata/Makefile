@@ -9,7 +9,7 @@ vendor:
 
 .PHONY: run
 run: vendor
-	composer run test
+	php bin/console web:generate
 
 .PHONY: docker-run
 docker-run:

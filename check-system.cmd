@@ -4,7 +4,7 @@ CALL :validateDocker
 CALL :validateKata web-page-generator-kata web-page-generator "make run"
 CALL :validateKata tennis-refactoring-kata tennis-refactoring "make tests"
 CALL :validateKata user-registration-refactoring-kata user-registration "make tests"
-CALL :validateKata gilded-rose-characterization-testsing gilded-rose-characterization "make run"
+CALL :validateKata gilded-rose-characterization-testsing gilded-rose-characterization "make tests"
 CALL :validateKata weather-kata weather-kata "make tests"
 CALL :validateKata trip-service-kata trip-service "make tests"
 CALL :validateKata trivia-golden-master trivia-golden-master "make run"
@@ -15,7 +15,7 @@ goto :eof
 :validateKata
     echo Validating %1...
     pushd %1
-    docker run --rm -v %CD%:/code codiumteam/legacy-training-php:%2 %~3
+    docker run --rm -v %CD%:/code codiumteam/legacy-training-php %~3
     popd
 goto :eof
 
@@ -31,7 +31,7 @@ goto :eof
     )
 
     echo Downloading docker image...
-    docker pull codiumteam/legacy-training-php:web-page-generator >NUL: 2>NUL:
+    docker pull codiumteam/legacy-training-php >NUL: 2>NUL:
     IF ERRORLEVEL 1 (
       echo Error
       echo There is a problem downloading the docker image
@@ -41,7 +41,7 @@ goto :eof
     )
 
     echo Validating docker mount permissions...
-    docker run --rm -v "%CD%":/code codiumteam/legacy-training-php:web-page-generator ls >NUL: 2>NUL:
+    docker run --rm -v "%CD%":/code codiumteam/legacy-training-php ls >NUL: 2>NUL:
     IF ERRORLEVEL 1 (
       echo Error
       echo Are you sure that you have permissions to mount your volumes?

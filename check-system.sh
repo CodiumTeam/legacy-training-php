@@ -40,14 +40,14 @@ function validateDocker() {
 
 validateDocker
 
-validateKata "run web page generator kata" "cd web-page-generator-kata" "make" "make docker-composer-install"
-validateKata "run tennis" "cd tennis-refactoring-kata" "make" "make docker-composer-install"
-validateKata "run user registration" "cd user-registration-refactoring-kata" "make" "make docker-composer-install"
-validateKata "run weather kata" "cd weather-kata" "make" "make docker-composer-install"
-validateKata "run trip service" "cd trip-service-kata" "make" "make docker-composer-install"
-validateKata "run gilded rose golden master" "cd gilded-rose-golden-master" "make" "make docker-composer-install"
-validateKata "run trivia golden master" "cd trivia-golden-master" "make" "make docker-composer-install"
-validateKata "run print date" "cd print-date" "make" "make docker-composer-install"
+validateKata "run web page generator kata" "cd web-page-generator-kata" "make" "make docker-run"
+validateKata "run tennis" "cd tennis-refactoring-kata" "make" "make docker-tests"
+validateKata "run user registration" "cd user-registration-refactoring-kata" "make" "make docker-tests"
+validateKata "run weather kata" "cd weather-kata" "make" "make docker-tests"
+validateKata "run trip service" "cd trip-service-kata" "make" "make docker-tests"
+validateKata "run gilded rose golden master" "cd gilded-rose-golden-master" "make" "make docker-tests"
+validateKata "run trivia golden master" "cd trivia-golden-master" "make" "make docker-tests"
+validateKata "run print date" "cd print-date" "make" "make docker-tests"
 
 if [ -z "$ERROR" ]; then
   echo "Congratulations! You are ready for the training!"
