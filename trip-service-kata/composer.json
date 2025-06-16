@@ -1,5 +1,6 @@
 {
     "name": "codium/trip-service-kata",
+    "version": "1.0.0",
     "authors": [
         {
             "name": "Luis Rovirosa Mairlot",
@@ -16,6 +17,9 @@
     "require": {
         "php": "^8.3",
         "phpunit/phpunit": "^12.2.2"
+    },
+    "require-dev": {
+        "roave/security-advisories": "dev-latest"
     },
     "autoload": {
         "psr-4": {
