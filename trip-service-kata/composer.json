@@ -11,6 +11,7 @@
         }
     ],
     "require": {
+        "php": "^8.3",
         "phpunit/phpunit": "^9"
     },
     "autoload": {

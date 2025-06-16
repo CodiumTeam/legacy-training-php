@@ -2,7 +2,7 @@
     "name": "codium/weather-kata",
     "description": "Material for the Working with Legacy Code training",
     "require": {
-        "php": "^8",
+        "php": "^8.3",
         "guzzlehttp/guzzle": "^7"
     },
     "require-dev": {

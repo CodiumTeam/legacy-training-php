@@ -11,7 +11,7 @@
         }
     ],
     "require": {
-        "php": "^8",
+        "php": "^8.3",
         "symfony/console": "^6"
     },
     "autoload": {
