@@ -13,7 +13,6 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" &&
 RUN pecl install xdebug-3.4.4 && docker-php-ext-enable xdebug
 RUN echo "xdebug.mode=coverage" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
 
-ENV COMPOSER_VENDOR_DIR=/vendor
 WORKDIR /code
 
 RUN --mount=type=bind,source=composer.json,target=composer.json \
