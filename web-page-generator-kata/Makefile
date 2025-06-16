@@ -8,7 +8,6 @@ dependencies:
 .PHONY: run
 run:
 	composer run test
-	@printf "Open html/users.html\n"
 
 # Docker commands
 .PHONY: docker-run

@@ -32,6 +32,7 @@ class WebPageGenerator extends Command
         $generator = new UsersStaticWebPageGenerator();
         $generator->generateFile($users);
 
+        $output->writeln("Open html/users.html");
         return 0;
     }
 }
