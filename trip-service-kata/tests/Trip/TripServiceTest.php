@@ -6,8 +6,7 @@ use PHPUnit\Framework\TestCase;
 
 class TripServiceTest extends TestCase
 {
-    /** @test */
-    public function xxx()
+    public function test_xxx()
     {
     }
 }
