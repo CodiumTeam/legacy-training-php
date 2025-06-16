@@ -1,5 +1,6 @@
 {
     "name": "codium/weather-kata",
+    "version": "1.0.0",
     "description": "Material for the Working with Legacy Code training",
     "scripts": {
       "test": "phpunit"
@@ -9,6 +10,7 @@
         "guzzlehttp/guzzle": "^7"
     },
     "require-dev": {
+        "roave/security-advisories": "dev-latest",
         "phpunit/phpunit": "^12.2.2"
     },
     "authors": [

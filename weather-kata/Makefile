@@ -4,7 +4,7 @@ PWD:=$(shell pwd)
 DOCKER_RUN_CMD:=docker run -t --rm -v $(PWD):/code -u $(UID):$(GID) codiumteam/legacy-training-php
 default: docker-tests
 
-vendor:
+vendor: composer.lock
 	composer install
 
 .PHONY: tests
@@ -23,3 +23,9 @@ docker-tests:
 .PHONY: docker-coverage
 docker-coverage:
 	@$(DOCKER_RUN_CMD) make coverage
+
+.PHONY: docker-update
+docker-update:
+	@$(DOCKER_RUN_CMD) composer update
+
+
