@@ -4,7 +4,6 @@ PWD:=$(shell pwd)
 DOCKER_RUN_CMD:=docker run -t --rm -v $(PWD):/code -u $(UID):$(GID) codiumteam/legacy-training-php
 default: docker-tests
 
-.PHONY: vendor
 vendor:
 	composer install
 
@@ -22,7 +21,6 @@ mutations: vendor
 	./vendor/bin/infection
 	@printf "\nOpen './infection.log' to see the mutations\n"
 
-# Docker commands
 .PHONY: docker-tests
 docker-tests:
 	@$(DOCKER_RUN_CMD) make tests
@@ -34,8 +32,3 @@ docker-coverage:
 .PHONY: docker-mutations
 docker-mutations:
 	@$(DOCKER_RUN_CMD) make mutations
-
-.PHONY: docker-update-composer-lock
-docker-update-composer-lock:
-	@$(DOCKER_RUN_CMD) composer update
-

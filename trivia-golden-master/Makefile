@@ -23,7 +23,3 @@ docker-run:
 .PHONY: docker-tests
 docker-tests:
 	@$(DOCKER_RUN_CMD) make tests
-
-.PHONY: docker-update-composer-lock
-docker-update-composer-lock:
-	@$(DOCKER_RUN_CMD) composer update

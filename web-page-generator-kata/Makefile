@@ -4,7 +4,6 @@ PWD:=$(shell pwd)
 DOCKER_RUN_CMD:=docker run -t --rm -v $(PWD):/code -u $(UID):$(GID) codiumteam/legacy-training-php
 default: docker-run
 
-# Local commands
 vendor:
 	composer install
 
@@ -12,15 +11,6 @@ vendor:
 run: vendor
 	composer run test
 
-# Docker commands
 .PHONY: docker-run
 docker-run:
 	@$(DOCKER_RUN_CMD) make run
-
-.PHONY: docker-build
-docker-build:
-	docker build -t codiumteam/legacy-training-php -f ../Dockerfile .
-
-.PHONY: docker-update-composer-lock
-docker-update-composer-lock:
-	@$(DOCKER_RUN_CMD) composer update

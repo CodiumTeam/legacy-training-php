@@ -16,7 +16,6 @@ coverage: vendor
 	composer run test -- --coverage-html coverage
 	@printf "\nOpen coverage/index.html to see the code coverage\n"
 
-
 .PHONY: docker-tests
 docker-tests:
 	@$(DOCKER_RUN_CMD) make tests
@@ -24,7 +23,3 @@ docker-tests:
 .PHONY: docker-coverage
 docker-coverage:
 	@$(DOCKER_RUN_CMD) make coverage
-
-.PHONY: docker-update-composer-lock
-docker-update-composer-lock:
-	@$(DOCKER_RUN_CMD) composer update
