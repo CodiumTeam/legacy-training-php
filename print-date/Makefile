@@ -6,10 +6,10 @@ dependencies:
 	composer install
 .PHONY: tests
 tests:
-	./vendor/bin/phpunit
+	composer run test
 .PHONY: coverage
 coverage:
-	./vendor/bin/phpunit --coverage-text
+	composer run test -- --coverage-text
 
 # Docker commands
 .PHONY: docker-tests

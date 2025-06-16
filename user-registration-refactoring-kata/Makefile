@@ -9,7 +9,7 @@ tests:
 	composer run test
 .PHONY: coverage
 coverage:
-	./vendor/bin/phpunit --coverage-text
+	composer run test -- --coverage-text
 
 # Docker commands
 

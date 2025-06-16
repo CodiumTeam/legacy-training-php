@@ -5,10 +5,10 @@ dependencies:
 	composer install
 .PHONY: tests
 tests:
-	./vendor/bin/phpunit
+	composer run test
 .PHONY: coverage
 coverage:
-	./vendor/bin/phpunit --coverage-html coverage
+	composer run test -- --coverage-html coverage
 	@printf "\nOpen coverage/index.html to see the code coverage\n"
 
 .PHONY: mutations

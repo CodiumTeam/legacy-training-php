@@ -10,7 +10,7 @@ tests:
 
 .PHONY: coverage
 coverage:
-	./vendor/bin/phpunit --coverage-text
+	composer run test -- --coverage-text
 
 # Docker commands
 
