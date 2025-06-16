@@ -2,7 +2,8 @@
 
 use Symfony\Component\Dotenv\Dotenv;
 
-require dirname(__DIR__).'/vendor/autoload.php';
+$vendor = getenv("COMPOSER_VENDOR_DIR") ?: (__DIR__ . '/../vendor');
+require $vendor . '/autoload.php';
 
 if (file_exists(dirname(__DIR__).'/config/bootstrap.php')) {
     require dirname(__DIR__).'/config/bootstrap.php';
