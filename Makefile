@@ -13,7 +13,7 @@ docker-update-composer-lock-$(KATA_DIRECTORIES):
 
 .PHONY: docker-push
 docker-push:
-	docker push codiumteam/legacy-training-php --all-tags
+	docker push codiumteam/legacy-training-php
 
 .PHONY: docker-pull
 docker-pull:
