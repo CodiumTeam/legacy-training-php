@@ -19,15 +19,15 @@ mutations:
 # Docker commands
 .PHONY: docker-tests
 docker-tests:
-	@docker run --rm -v ${PWD}:/code -v /code/vendor codiumteam/legacy-training-php:gilded-rose-characterization make tests
+	@docker run --rm -v ${PWD}:/code codiumteam/legacy-training-php:gilded-rose-characterization make tests
 
 .PHONY: docker-coverage
 docker-coverage:
-	@docker run --rm -v ${PWD}:/code -v /code/vendor codiumteam/legacy-training-php:gilded-rose-characterization make coverage
+	@docker run --rm -v ${PWD}:/code codiumteam/legacy-training-php:gilded-rose-characterization make coverage
 
 .PHONY: docker-mutations
 docker-mutations:
-	@docker run --rm -v ${PWD}:/code -v /code/vendor codiumteam/legacy-training-php:gilded-rose-characterization make mutations
+	@docker run --rm -v ${PWD}:/code codiumteam/legacy-training-php:gilded-rose-characterization make mutations
 
 .PHONY: docker-build
 docker-build:

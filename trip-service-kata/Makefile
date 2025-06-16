@@ -16,11 +16,11 @@ coverage:
 
 .PHONY: docker-tests
 docker-tests:
-	@docker run --rm -v ${PWD}:/code -v /code/vendor codiumteam/legacy-training-php:trip-service make tests
+	@docker run --rm -v ${PWD}:/code codiumteam/legacy-training-php:trip-service make tests
 
 .PHONY: docker-coverage
 docker-coverage:
-	@docker run --rm -v ${PWD}:/code -v /code/vendor codiumteam/legacy-training-php:trip-service make coverage
+	@docker run --rm -v ${PWD}:/code codiumteam/legacy-training-php:trip-service make coverage
 
 .PHONY: docker-build
 docker-build:

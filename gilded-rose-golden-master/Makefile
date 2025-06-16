@@ -11,7 +11,7 @@ run:
 # Docker commands
 .PHONY: docker-run
 docker-run:
-	@docker run --rm -v ${PWD}:/code -v /code/vendor codiumteam/legacy-training-php:gilded-rose-golden-master make run
+	@docker run --rm -v ${PWD}:/code codiumteam/legacy-training-php:gilded-rose-golden-master make run
 
 .PHONY: docker-build
 docker-build:
