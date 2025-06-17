@@ -21,12 +21,6 @@
       <directory>tests</directory>
     </testsuite>
   </testsuites>
-  <!-- Run `composer require symfony/panther` before enabling this extension -->
-  <!--
-    <extensions>
-        <extension class="Symfony\Component\Panther\ServerExtension" />
-    </extensions>
-    -->
   <source>
     <include>
       <directory suffix=".php">src</directory>
