@@ -4,12 +4,13 @@ namespace GildedRose\Test;
 
 use GildedRose\GildedRose;
 use GildedRose\Item;
-use PHPUnit\Framework\Attributes\CoversNamespace;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 class GildedRoseTest extends TestCase
 {
-    public function test_changeMe()
+    #[Test]
+    public function changeMe()
     {
         /** @var Item[] $items */
         $items = array(new Item("aName", 10, 20));

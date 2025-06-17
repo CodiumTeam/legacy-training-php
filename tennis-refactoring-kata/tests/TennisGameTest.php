@@ -3,12 +3,14 @@
 declare(strict_types=1);
 
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 final class TennisGameTest extends TestCase
 {
     #[DataProvider('provideScores')]
-    public function test_scores(int $score1, int $score2, string $expectedResult): void
+    #[Test]
+    public function scores(int $score1, int $score2, string $expectedResult): void
     {
         $game = new TennisGame('player1', 'player2');
 
